@@ -3,6 +3,7 @@
 	<title></title>
 </head>
 <body>
+	{{ $error }}
 	<form action="{{ route('signin') }}" method="POST">
 		Nama tampilan : <input type="text" name="Username"> {{ $errors->first('Username') }}
 		<br><br>

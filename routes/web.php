@@ -14,17 +14,44 @@ Route::group(['middleware' => 'web'],  function(){
 	Route::get('/', function () {
 		return view('welcome');
 	});
-	
-	Route::get('signup', function () {
-		return view('signup');
-	});
 
-	Route::get('login', function () {
-		return view('login');
-	});
+	Route::get('/signup', [
+		'uses' => 'UserController@viewSignUp',
+	]);
+
+	Route::post('/signup', [
+		'uses' => 'UserController@postSignUp',
+		'as' => 'signup'
+	]);
+
+	Route::get('/login', [
+		'uses' => 'UserController@viewLogin',
+	]);
+
+	Route::post('/login', [
+		'uses' => 'UserController@postSignIn',
+		'as' => 'signin'
+	]);
 	
+	Route::get('/changePassword', [
+		'uses' => 'UserController@viewChangePassword',
+	]);
+
+	Route::post('/changePassword', [
+		'uses' => 'UserController@postChangePassword',
+		'as' => 'changePassword'
+	]);
+
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
+	]);
+
+	Route::get('/date', [
+		'uses' => 'UserController@date',
+	]);
+
+	Route::get('/confirm/{token}', [
+		'uses' => 'UserController@confirmSignUp',
 	]);
 
 	Route::get('dashboard', [
@@ -35,17 +62,6 @@ Route::group(['middleware' => 'web'],  function(){
 
 	Route::get('/editProfile', [
 		'uses' => 'UserController@viewEditProfile',
-		'middleware' => 'auth'
-	]);
-
-	Route::post('/signup', [
-		'uses' => 'UserController@postSignUp',
-		'as' => 'signup'
-	]);
-	
-	Route::post('/login', [
-		'uses' => 'UserController@postSignIn',
-		'as' => 'signin'
 	]);
 
 	Route::post('/edit', [
