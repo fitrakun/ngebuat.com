@@ -35,6 +35,7 @@ class UserController extends Controller
 	    return $random_string;
 	}
 
+	//fungsi coba-coba
     public function date(){
     	$date_example = "qi3fe1r5vnfov241116171927";
     	$date_substr = substr($date_example,13);
@@ -64,25 +65,30 @@ class UserController extends Controller
     	}
     }
 
-    public function viewLogin(){
+    public function viewLogin(Request $request){
     	if(Auth::check()){
     		return redirect('dashboard');
     	}
     	else{
     		$data = [];
-			$data['error'] = "";
+    		if(!$request->session()->has('msg')){
+				$data['error'] = "";
+			}
+			else{
+				$data['error'] = $request->session()->get('msg');
+			}
+			$request->session()->put('msg', '');
     		return view('login', $data);
     	}
     }
 
-	public function viewChangePassword(){
+	public function viewChangePassword(Request $request){
     	if(Auth::check()){
     		return view('changePassword');
     	}
     	else{
-    		$data = [];
-			$data['error'] = "Harap signin terlebih dahulu";
-			return view('login', $data);
+    		$request->session()->put('msg', 'Harap signin terlebih dahulu');
+    		return redirect('/login');
     	}
     }
 
@@ -106,13 +112,11 @@ class UserController extends Controller
 			$data['provinsi'] = $user->provinsi;
 			$data['negara'] = $user->negara;
 			$data['biodata'] = $user->biodata;
-
 			return View('editprofile', $data);
     	}
     	else{
-    		$data = [];
-			$data['error'] = "Harap signin terlebih dahulu";
-			return view('login', $data);
+    		$request->session()->put('msg', 'Harap signin terlebih dahulu');
+    		return redirect('/login');
     	}
 	}
     
