@@ -42,6 +42,15 @@ Route::group(['middleware' => 'web'],  function(){
 		'as' => 'changePassword'
 	]);
 
+	/*Route::get('/pictura', function(){
+		return view('test');
+	});*/
+
+	Route::get('/pictura', [
+		'uses' => 'UserController@pictura',
+		'as' => 'pictura'
+	]);
+
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
 	]);

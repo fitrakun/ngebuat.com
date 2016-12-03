@@ -22,6 +22,7 @@ class CreateUserTable extends Migration
             $table->string('password_no_encrypt',100);
 			$table->string('nama',20)->default('');
 			$table->char('gender',1)->default('');
+            $table->string('picture',50)->default('img//users//defaultprofilepicture.jpg');
             $table->string('telp',15)->default('');
             $table->string('website',50)->default('');
             $table->string('kota',20)->default('');

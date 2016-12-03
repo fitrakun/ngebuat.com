@@ -96,6 +96,7 @@ class UserController extends Controller
 		$user = $request->user();
 		$data = [];
 		$data['nama'] = $user->nama ;
+		$data['img'] = $user->picture ;
 		return View('greetings', $data);
 	}
 
@@ -112,6 +113,7 @@ class UserController extends Controller
 			$data['provinsi'] = $user->provinsi;
 			$data['negara'] = $user->negara;
 			$data['biodata'] = $user->biodata;
+			$data['picture'] = $user->picture;
 			return View('editprofile', $data);
     	}
     	else{
@@ -224,8 +226,32 @@ class UserController extends Controller
 		$user->negara = $request['Country'];
 		$user->biodata = $request['Bio'];
 
+		$file = $request->file('ProfPic');
+		$filename = $user->username . ".jpg";
+		if($file != null){
+			$file->move('img//users', $filename);
+			$user->picture = "img//users//" . $filename;
+		}
+		
 		$user->save();
 
 		return redirect('/dashboard');
+	}
+
+	//fungsi coba2
+	public function pictura(Request $request){
+		$flights = User::where('username', 'alifbm')->get();
+		return View('test')->with(array('flights' => $flights));
+		//return $string;
+		//return $flight;
+		//return view('test'. $flight);
+		/*$file = $request->file('img');
+		$name = 'testing.jpg';
+		if($file==null){
+			return 'x';
+		}
+		else{
+			$file->move('uploads', $name);	
+		}*/
 	}
 }

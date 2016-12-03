@@ -4,9 +4,9 @@
 </head>
 <body>
 	<form action="{{ route('changePassword') }}" method="POST">
-		Password lama : <input type="password" name="oldPassword"> 
+		Password lama : <input type="password" name="oldPassword"> {{ $errors->first('oldPassword') }}
 		<br><br>
-		Password baru: <input type="password" name="newPassword"> {{ $errors->first('Password') }}
+		Password baru: <input type="password" name="newPassword"> {{ $errors->first('newPassword') }}
 		<br><br>
 		confirm password baru: <input type="password" name="newPassword_confirmation">
 		<br><br>
