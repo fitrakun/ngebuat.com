@@ -204,7 +204,8 @@ class UserController extends Controller
 			'Country' => 'regex:/^[\pL\s\-]+$/u|max:20',
 			'Website' => ['max:50',
 			'regex:/^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/'
-			]
+			],
+			'ProfPic' => 'image'
 		]);
 
 		$user = User::find($request->user()->id);

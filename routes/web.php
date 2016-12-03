@@ -46,6 +46,7 @@ Route::group(['middleware' => 'web'],  function(){
 		return view('test');
 	});*/
 
+	//cobacoba
 	Route::get('/pictura', [
 		'uses' => 'UserController@pictura',
 		'as' => 'pictura'
@@ -55,6 +56,7 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'UserController@logout',
 	]);
 
+	//cobacoba
 	Route::get('/date', [
 		'uses' => 'UserController@date',
 	]);
@@ -76,5 +78,22 @@ Route::group(['middleware' => 'web'],  function(){
 	Route::post('/edit', [
 		'uses' => 'UserController@editProfile',
 		'as' => 'edit'
+	]);
+
+	Route::get('/addProduct', [
+		'uses' => 'ProductController@viewAddProduct',
+	]);
+
+	Route::post('/addProduct', [
+		'uses' => 'ProductController@addProduct',
+		'as' => 'addProduct'
+	]);
+
+	Route::get('/showProduct/{id}', [
+		'uses' => 'ProductController@showProduct',
+	]);
+
+	Route::get('/home', [
+		'uses' => 'ProductController@home',
 	]);
 });
