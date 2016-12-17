@@ -3,6 +3,13 @@
 	<title></title>
 </head>
 <body>
+    @if($product->isVerified==0)
+        UNVERIFIED <br><br>
+    @else
+        VERIFIED <br><br>
+    @endif
+    <img src="../{{ $product->picture}}" height=200 width=200>
+    <br><br>
 	Nama : {{ $product->nama }}
 	<br><br>
 	Kesulitan : {{ $product->kesulitan }}
@@ -35,8 +42,10 @@
         <br><br>
         Penjelasan : {{ $step->penjelasan}}
         <br><br>
-        Gambar : <img src="../{{ $step->picture}}" height=200 width=200>
-        <br><br>
+        @if($step->picture!=null)
+            Gambar : <img src="../{{ $step->picture}}" height=200 width=200>
+            <br><br>
+        @endif
     @endforeach
     <br><br>
 </body>

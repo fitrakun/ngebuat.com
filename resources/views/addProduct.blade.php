@@ -21,6 +21,8 @@
 		<br><br>
 		Penjelasan Karya : <input type="text" name="Desc"> {{ $errors->first('Desc') }}
 		<br><br>
+		Gambar : <input type="file" name="Picture"> {{ $errors->first('Picture') }} 
+		<br><br>
 		<div id='alat'>
 			Alat : <br>
 			<input type="text" name="alat1"><br><br> {{ $errors->first('alat1') }} 

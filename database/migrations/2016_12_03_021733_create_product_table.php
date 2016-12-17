@@ -20,11 +20,13 @@ class CreateProductTable extends Migration
             $table->integer('kesulitan');
             $table->string('harga',10);
             $table->string('kategori',50);
+            $table->string('picture',50);
             $table->string('penjelasan',200);
             $table->integer('penghargaan')->default(0);
             $table->integer('likes')->default(0);
             $table->integer('views')->default(0);
             $table->string('username_pembuat',20);
+            $table->integer('isVerified')->default(0);
             $table->index(['id']);
         });
     }

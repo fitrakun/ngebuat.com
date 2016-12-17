@@ -33,7 +33,8 @@ class ProductController extends Controller
 			'Level' => 'required|numeric|max:5|min:1',
 			'Price' => 'required|numeric',
 			'Category' => 'required|alpha',
-			'Desc' => 'required|max:200'
+			'Desc' => 'required|max:200',
+			'Picture' => 'required|image'
 		]);
 
     	$countAlat = (int) $request["countAlat"];
@@ -54,6 +55,17 @@ class ProductController extends Controller
 			]);
 		}
 
+		for($i=1; $i<=$countLangkah; $i++){
+			$temp = "judulstep" . $i;
+			$temp2 = "descstep" . $i;
+			$temp3 = "step" . $i;
+			$this->validate($request, [
+	    		$temp => 'regex:/^[a-z\d\-_\s]+$/i|max:50|required',
+	    		$temp2 => 'regex:/^[a-z\d\-_\s]+$/i|max:1000|required',
+	    		$temp3 => 'image',
+			]);
+		}
+
 		//add tabel product
     	$user = $request->user();
 
@@ -64,7 +76,12 @@ class ProductController extends Controller
     	$product->kategori = $request["Category"];
     	$product->penjelasan = $request["Desc"];
     	$product->username_pembuat = $user->username;
-		
+		$file = $request->file("Picture");
+		$filename = $product->id . ".jpg";
+		if($file != null){
+			$file->move('img//product', $filename);
+			$product->picture = "img//product//" . $filename;
+		}
 		$product->save();
 		
 		//add tabel alat

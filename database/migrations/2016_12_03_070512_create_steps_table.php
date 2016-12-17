@@ -18,7 +18,7 @@ class CreateStepsTable extends Migration
             $table->increments('id');
             $table->string('judul',50);
             $table->string('penjelasan',1000);
-            $table->string('picture',50)->default(null);
+            $table->string('picture',50)->nullable();
         });
 
         DB::statement('ALTER Table Steps add product_id INTEGER NOT NULL;');
