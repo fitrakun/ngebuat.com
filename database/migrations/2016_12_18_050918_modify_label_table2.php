@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLabelsTable extends Migration
+class ModifyLabelTable2 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class CreateLabelsTable extends Migration
     public function up()
     {
         //
-        Schema::create('Labels', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama',50);
+        Schema::table('Labels', function ($table) {
+            $table->string('kategori_produk',50);
         });
 
-        DB::statement('ALTER Table Labels add product_id INTEGER NOT NULL;');
+        DB::statement('CREATE INDEX product ON Labels (nama_produk)');
+        DB::statement('CREATE INDEX kproduct ON Labels (kategori_produk)');
     }
 
     /**
@@ -30,6 +30,5 @@ class CreateLabelsTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('Labels');
     }
 }
