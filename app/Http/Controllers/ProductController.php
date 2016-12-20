@@ -113,7 +113,7 @@ class ProductController extends Controller
 			$label->nama = $arr[$j];
 			$label->product_id = $product->id;
 			$label->nama_produk = $product->nama;
-			$label->nama_produk = $product->kategori;
+			$label->kategori_produk = $product->kategori;
 			$label->picture_produk = $product->picture;
 			$label->username_pembuat_produk = $product->username_pembuat;
 			$label->penghargaan_produk = 0;
