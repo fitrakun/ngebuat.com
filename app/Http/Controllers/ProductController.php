@@ -181,7 +181,11 @@ class ProductController extends Controller
     	}
     	else if($kategori=="all"){
     		if($search==NULL){
-    			$search_result = NULL;
+    			$search_result	= DB::table('products')
+		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+		               			->distinct()
+		               			->get();
 	    	}
 	    	else{
 	    		$search_result	= DB::table('products')
