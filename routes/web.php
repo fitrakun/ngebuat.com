@@ -56,11 +56,6 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'UserController@logout',
 	]);
 
-	//cobacoba
-	Route::get('/date', [
-		'uses' => 'UserController@date',
-	]);
-
 	Route::get('/confirm/{token}', [
 		'uses' => 'UserController@confirmSignUp',
 	]);
@@ -93,7 +88,7 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@showProduct',
 	]);
 
-	Route::get('/home', [
+	Route::get('/home/{kategori?}/{search?}', [
 		'uses' => 'ProductController@home',
 	]);
 });

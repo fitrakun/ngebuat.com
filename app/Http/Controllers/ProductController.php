@@ -14,7 +14,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    //
+	private static function splitLabel($str){
+		$temp = "";
+		$j = 0;
+		for($i=0; $i<strlen($str); $i++){
+			if($str[$i]==';'){
+				$temp = trim($temp);
+				$arr[$j] = $temp;
+				$j++;
+				$temp = "";
+			}
+			else{
+				$temp .= $str[$i];
+			}
+		}
+		if($temp!=""){
+			$temp = trim($temp);
+			$arr[$j] = $temp;
+			$j++;
+			$temp = "";
+		}
+		return $arr;
+	}
+
 	public function viewAddProduct(Request $request){
     	if(Auth::check()){
     		return view('addProduct');
@@ -29,7 +51,7 @@ class ProductController extends Controller
     	//validasi input dari form
     	$this->validate($request, [
     		'Name' => 'regex:/^[a-z\d\-_\s]+$/i|max:20|required',
-			'Label' => 'alpha_num|max:50',
+			'Label' => 'regex:/^[a-z\d\-_\s\;]+$/i|max:200',
 			'Level' => 'required|numeric|max:5|min:1',
 			'Price' => 'required|numeric',
 			'Category' => 'required|alpha',
@@ -83,7 +105,21 @@ class ProductController extends Controller
 			$product->picture = "img//product//" . $filename;
 		}
 		$product->save();
-		
+
+		//add tabel label
+		$arr = $this->splitLabel($request["Label"]);
+		for($j=0; $j<count($arr); $j++){
+			$label = new Label();
+			$label->nama = $arr[$j];
+			$label->product_id = $product->id;
+			$label->nama_produk = $product->nama;
+			$label->nama_produk = $product->kategori;
+			$label->picture_produk = $product->picture;
+			$label->username_pembuat_produk = $product->username_pembuat;
+			$label->penghargaan_produk = 0;
+			$label->save();
+		}
+
 		//add tabel alat
 		for($i=1; $i<=$countAlat; $i++){
 			$alat = new Tool();
@@ -139,7 +175,57 @@ class ProductController extends Controller
 		}
     }
 
-    public function home(){
+    public function home($kategori = NULL, $search = NULL){
+    	if($kategori==NULL){
+    		$search_result = NULL;
+    	}
+    	else if($kategori=="all"){
+    		if($search==NULL){
+    			$search_result = NULL;
+	    	}
+	    	else{
+	    		$search_result	= DB::table('products')
+		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+		                		->where('nama', 'LIKE', '%'.$search.'%')
+		               			->distinct()
+		               			->get();
+	   			$search_result2	= DB::table('labels')
+				        		->select('product_id', 'nama_produk', 'picture_produk',
+				        			'username_pembuat_produk', 'penghargaan_produk')
+				        		->where('nama', 'LIKE', '%'.$search.'%')
+				       			->distinct()
+				       			->get();
+				$search_result = $search_result->merge($search_result2)->unique();
+	    	}
+		}
+		else{
+			if($search==NULL){
+    			$search_result	= DB::table('products')
+		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+		                		->where('kategori', $kategori)
+		               			->distinct()
+		               			->get();
+	    	}
+	    	else{
+				$search_result	= DB::table('products')
+		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+		                		->where('nama', 'LIKE', '%'.$search.'%')
+		                		->where('kategori', $kategori)
+		               			->distinct()
+		               			->get();
+		        $search_result2	= DB::table('labels')
+				        		->select('product_id', 'nama_produk', 'picture_produk',
+				        			'username_pembuat_produk', 'penghargaan_produk')
+				        		->where('nama', 'LIKE', '%'.$search.'%')
+				        		->where('kategori_produk', $kategori)
+				       			->distinct()
+				       			->get();
+				$search_result = $search_result->merge($search_result2)->unique();
+			}
+	    }
 	    $product_new		= DB::table('products')
 	                		->orderBy('id', 'desc')
 	               			->limit(6)
@@ -148,6 +234,6 @@ class ProductController extends Controller
 	   					 	->orderBy('likes', 'desc')
                			 	->limit(4)
                			 	->get();
-    	return View('home')->with(array('product_new' => $product_new, 'product_popular' => $product_popular));
+    	return View('home')->with(array('product_new' => $product_new, 'product_popular' => $product_popular, 'search_result' => $search_result));
     }
 }
