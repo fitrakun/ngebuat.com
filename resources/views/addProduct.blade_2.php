@@ -124,7 +124,7 @@
                                 <div id="dynamicInput">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <input type="text" placeholder="alat1" class="form-control inputform" id="alat1" name="alat1">
+                                            <input type="text" placeholder="Alat" class="form-control inputform" id="alat1" name="alat1">
                                             {{ $errors->first('alat1') }} 
                                         </div> 
                                     </div>
@@ -137,7 +137,7 @@
                                 <div id="dynamicInput2">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <input type="text" placeholder="bahan1" class="form-control inputform" id="bahan1" name="bahan1">
+                                            <input type="text" placeholder="Bahan" class="form-control inputform" id="bahan1" name="bahan1">
                                             {{ $errors->first('bahan1') }}
                                         </div> 
                                     </div>
@@ -151,7 +151,7 @@
                                     <div class="form-group">
                                         <label class="textleft control-label col-sm-3" for="langkah1">Langkah</label>
                                         <div class="col-sm-9">
-                                            <input type="text" placeholder="langkah1" class="form-control inputform" id="langkah1" name="judulstep1">
+                                            <input type="text" placeholder="Judul Langkah" class="form-control inputform" id="langkah1" name="judulstep1">
                                             {{ $errors->first('judulstep1') }} 
                                         </div> 
                                     </div>
@@ -159,7 +159,7 @@
                                         <div class="col-sm-3">
                                         </div>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" rows="5" id="penjelasanlangkah" placeholder="descstep1" name="descstep1"></textarea>
+                                            <textarea class="form-control" rows="5" id="penjelasanlangkah" placeholder="Penjelasan Langkah" name="descstep1"></textarea>
                                             {{ $errors->first('descstep1') }} 
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 inputjudulgambar">
-                                                    <input type="text" placeholder="Gambar1-1" class="form-control inputform" id="langkah">
+                                                    <input type="text" placeholder="Judul Gambar" class="form-control inputform" id="langkah">
                                                 </div>
                                             </div>
                                         </div>
@@ -217,7 +217,7 @@
                     counterlangkah++;
                     countergambar[counterlangkah]=1;
                     var addig = 'addInputGambar("dynamicInputGambar'+counterlangkah+'-'+countergambar[counterlangkah]+'");';
-                    newdiv.innerHTML = "<hr><div class='form-group'><label class='textleft control-label col-sm-3' for='langkah"+ counterlangkah+"'>Langkah</label><div class='col-sm-9'><input type='text' placeholder='langkah"+counterlangkah+"' class='form-control inputform' id='langkah"+counterlangkah+"'></div></div><div class='form-group'><div class='col-sm-3'></div><div class='col-sm-9'><textarea class='form-control' rows='5' id='penjelasanlangkah' placeholder='descstep"+counterlangkah+"'></textarea></div></div><div class='form-group'><label class='textleft control-label col-sm-3' for='gambar'>Gambar</label><div id='dynamicInputGambar"+counterlangkah+"-"+countergambar[counterlangkah]+"'><div class='row'><div class='col-sm-2'><div class='form-group'><img id='img-upload"+counterlangkah+"-"+countergambar[counterlangkah]+"' class='img-upload2' src='img/DISPLAY%20PICTURE_2.png'/><div class='input-group input-group"+counterlangkah+"-"+countergambar[counterlangkah]+"'><div class='input-group-btn'><div class='btn-file2 btn btn-file"+counterlangkah+"-"+countergambar[counterlangkah]+"'><img class='pilihfoto' src='img/pilih%20gambar.png'><input type='file' id='imgInp"+counterlangkah+"-"+countergambar[counterlangkah]+"' onClick='getId(this.id)'></div><input type='text' class='hidden form-control' placeholder='' readonly></div></div><div class='input-group'></div></div></div><div class='col-sm-6 inputjudulgambar'><input type='text' placeholder='gambar"+counterlangkah+"-"+countergambar[counterlangkah]+"' class='form-control inputform' id='langkah'></div></div></div></div><div class='form-group'><input type='button' class='pull-right col-sm-2 btn tambahgambar' onclick='"+addig+"'></div>";
+                    newdiv.innerHTML = "<hr><div class='form-group'><label class='textleft control-label col-sm-3' for='langkah"+ counterlangkah+"'>Langkah</label><div class='col-sm-9'><input type='text' placeholder='Judul Langkah' class='form-control inputform' id='langkah"+counterlangkah+"'></div></div><div class='form-group'><div class='col-sm-3'></div><div class='col-sm-9'><textarea class='form-control' rows='5' id='penjelasanlangkah' placeholder='Penjelasan Langkah'></textarea></div></div><div class='form-group'><label class='textleft control-label col-sm-3' for='gambar'>Gambar</label><div id='dynamicInputGambar"+counterlangkah+"-"+countergambar[counterlangkah]+"'><div class='row'><div class='col-sm-2'><div class='form-group'><img id='img-upload"+counterlangkah+"-"+countergambar[counterlangkah]+"' class='img-upload2' src='img/DISPLAY%20PICTURE_2.png'/><div class='input-group input-group"+counterlangkah+"-"+countergambar[counterlangkah]+"'><div class='input-group-btn'><div class='btn-file2 btn btn-file"+counterlangkah+"-"+countergambar[counterlangkah]+"'><img class='pilihfoto' src='img/pilih%20gambar.png'><input type='file' id='imgInp"+counterlangkah+"-"+countergambar[counterlangkah]+"' onClick='getId(this.id)'></div><input type='text' class='hidden form-control' placeholder='' readonly></div></div><div class='input-group'></div></div></div><div class='col-sm-6 inputjudulgambar'><input type='text' placeholder='Judul Gambar' class='form-control inputform' id='langkah'></div></div></div></div><div class='form-group'><input type='button' class='pull-right col-sm-2 btn tambahgambar' onclick='"+addig+"'></div>";
                     document.getElementById(divName).appendChild(newdiv);
                     document.getElementById('countStep').setAttribute('value', countStep);
                 }
@@ -228,7 +228,7 @@
                     var currentlangkah=parseInt(cl);
                     newdiv.className= 'row tambahangambar';
                     countergambar[currentlangkah]++;
-                    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-2'><div class='form-group'><img class='img-upload2' id='img-upload"+currentlangkah + "-" + countergambar[currentlangkah]+ "' src='img/DISPLAY%20PICTURE_2.png'/><div class='input-group2 input-group" + currentlangkah + "-" + countergambar[currentlangkah] + "'><div class='input-group-btn'><div class='btn-file2 btn btn-file"+currentlangkah+"-"+countergambar[currentlangkah]+"'><img class='pilihfoto' src='img/pilih%20gambar.png'><input type='file' id='imgInp"+currentlangkah+"-"+countergambar[currentlangkah]+"'onClick='getId(this.id)'></div><input type='text' class='hidden form-control' readonly></div></div><div class='input-group'></div></div></div><div class='col-sm-6 inputjudulgambar'><input type='text' placeholder='gambar"+counterlangkah+"-"+countergambar[currentlangkah]+"' class='form-control inputform' id='langkah'></div>";
+                    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-2'><div class='form-group'><img class='img-upload2' id='img-upload"+currentlangkah + "-" + countergambar[currentlangkah]+ "' src='img/DISPLAY%20PICTURE_2.png'/><div class='input-group2 input-group" + currentlangkah + "-" + countergambar[currentlangkah] + "'><div class='input-group-btn'><div class='btn-file2 btn btn-file"+currentlangkah+"-"+countergambar[currentlangkah]+"'><img class='pilihfoto' src='img/pilih%20gambar.png'><input type='file' id='imgInp"+currentlangkah+"-"+countergambar[currentlangkah]+"'onClick='getId(this.id)'></div><input type='text' class='hidden form-control' readonly></div></div><div class='input-group'></div></div></div><div class='col-sm-6 inputjudulgambar'><input type='text' placeholder='Judul Gambar' class='form-control inputform' id='langkah'></div>";
                     document.getElementById(divName).appendChild(newdiv);
                     document.getElementById('countGambarperLangkah').setAttribute('value', currentlangkah+"-"+countergambar[currentlangkah]);
                 }
