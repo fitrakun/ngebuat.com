@@ -42,11 +42,17 @@
         <br><br>
         Penjelasan : {{ $step->penjelasan}}
         <br><br>
-        <!-- view calling controller method -->
-        @if($step->picture!=null)
-            Gambar : <img src="../{{ $step->picture}}" height=200 width=200>
-            <br><br>
-        @endif
+        <?php
+            $arr = $productCtrl->getStepPictures($step->id);
+        ?>
+        @foreach ($arr as $pict)
+            @if($pict!=null)
+                Gambar : <img src="../{{ $pict->picture}}" height=200 width=200>
+                <br><br>
+            @endif
+        @endforeach
+        --------------------------------------------------------------------
+        <br><br>
     @endforeach
     <br><br>
 </body>

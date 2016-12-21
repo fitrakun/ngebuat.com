@@ -8,6 +8,8 @@ use App\Step;
 use App\Tool;
 use App\Material;
 use App\Label;
+use App\StepPicture;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +64,7 @@ class ProductController extends Controller
     	$countAlat = (int) $request["countAlat"];
     	$countBahan = (int) $request["countBahan"];
     	$countLangkah = (int) $request["countStep"];
-		
+				
 		for($i=1; $i<=$countAlat; $i++){
 			$temp = "alat" . $i;
 			$this->validate($request, [
@@ -80,12 +82,24 @@ class ProductController extends Controller
 		for($i=1; $i<=$countLangkah; $i++){
 			$temp = "judulstep" . $i;
 			$temp2 = "descstep" . $i;
-			$temp3 = "step" . $i;
 			$this->validate($request, [
 	    		$temp => 'regex:/^[a-z\d\-_\s]+$/i|max:50|required',
-	    		$temp2 => 'regex:/^[a-z\d\-_\s]+$/i|max:1000|required',
-	    		$temp3 => 'image',
+	    		$temp2 => 'regex:/^[a-z\d\-_\s]+$/i|max:1000|required'
 			]);
+			$j=1;
+			while($j<=10){
+				$temp3 = "step" . $i . "-" . $j;
+				$file = $request->file($temp3);
+				if($file != null){
+					$this->validate($request, [
+			    		$temp3 => 'image'
+					]);
+				}
+				else{
+					break;
+				}
+				$j++;
+			}
 		}
 
 		//add tabel product
@@ -99,6 +113,8 @@ class ProductController extends Controller
     	$product->penjelasan = $request["Desc"];
     	$product->username_pembuat = $user->username;
     	$product->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
+    	$product->picture = "temporary";
+    	$product->save();
 		$file = $request->file("Picture");
 		$filename = $product->id . ".jpg";
 		if($file != null){
@@ -147,15 +163,25 @@ class ProductController extends Controller
 			$langkah->judul = $request[$temp];
 			$temp = "descstep" . $i;
 			$langkah->penjelasan = $request[$temp];
-			
-			$temp = "step" . $i;
-			$file = $request->file($temp);
-			$filename = $product->id . '-' . $i . ".jpg";
-			if($file != null){
-				$file->move('img//product', $filename);
-				$langkah->picture = "img//product//" . $filename;
-			}
 			$langkah->save();
+
+			$j=1;
+			while($j<=10){
+				$stepPic = new StepPicture();
+				$temp = "step" . $i . "-" . $j;
+				$file = $request->file($temp);
+				$filename = $product->id . '-' . $i . '-' . $j . ".jpg";
+				if($file != null){
+					$file->move('img//product', $filename);
+					$stepPic->step_id = $langkah->id;
+					$stepPic->picture = "img//product//" . $filename;
+					$stepPic->save();
+				}
+				else{
+					break;
+				}
+				$j++;
+			}
 		}
     	return redirect('/dashboard');
     }
@@ -172,8 +198,13 @@ class ProductController extends Controller
 			$materials = Material::where('product_id', $id)->get();
 			$steps = Step::where('product_id', $id)->get();
 			return View('product')->with(array('product' => $product, 'tools' => $tools, 'materials' => $materials, 
-				'steps' => $steps));
+				'steps' => $steps, 'productCtrl' => new ProductController));
 		}
+    }
+
+    public function getStepPictures($id){
+    	$arr = Step::find($id)->StepPictures;
+    	return $arr;
     }
 
     public function home($kategori = NULL, $search = NULL){
