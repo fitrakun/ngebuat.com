@@ -91,4 +91,9 @@ Route::group(['middleware' => 'web'],  function(){
 	Route::get('/home/{kategori?}/{search?}', [
 		'uses' => 'ProductController@home',
 	]);
+
+	Route::post('/search', [
+		'uses' => 'ProductController@search',
+		'as' => 'search'
+	]);
 });
