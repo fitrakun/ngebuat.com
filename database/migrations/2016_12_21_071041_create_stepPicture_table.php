@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStepsTable extends Migration
+class CreateStepPictureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,14 @@ class CreateStepsTable extends Migration
     public function up()
     {
         //
-        Schema::create('Steps', function (Blueprint $table) {
+        Schema::create('StepPictures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul',50);
-            $table->string('penjelasan',1000);
+            $table->string('picture',50);
         });
 
-        DB::statement('ALTER Table Steps add product_id INTEGER NOT NULL;');
-        DB::statement('CREATE INDEX product ON Steps (product_id)');
+        DB::statement('ALTER Table StepPictures add step_id INTEGER NOT NULL;');
+        DB::statement('CREATE INDEX step ON StepPictures (step_id)');
+
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateStepsTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('Steps');
+        Schema::dropIfExists('Labels');
     }
 }

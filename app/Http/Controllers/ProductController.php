@@ -147,7 +147,7 @@ class ProductController extends Controller
 			$langkah->judul = $request[$temp];
 			$temp = "descstep" . $i;
 			$langkah->penjelasan = $request[$temp];
-
+			
 			$temp = "step" . $i;
 			$file = $request->file($temp);
 			$filename = $product->id . '-' . $i . ".jpg";

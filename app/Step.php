@@ -8,4 +8,9 @@ class Step extends Model
 {
     //
     public $timestamps = false;
+
+    public function StepPictures()
+    {
+        return $this->hasMany('App\stepPicture', 'step_id');
+    }
 }
