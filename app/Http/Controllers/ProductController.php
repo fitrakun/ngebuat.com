@@ -188,19 +188,26 @@ class ProductController extends Controller
 		               			->get();
 	    	}
 	    	else{
-	    		$search_result	= DB::table('products')
-		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
-		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
-		                		->where('nama', 'LIKE', '%'.$search.'%')
-		               			->distinct()
-		               			->get();
-	   			$search_result2	= DB::table('labels')
-				        		->select('product_id', 'nama_produk', 'picture_produk',
-				        			'username_pembuat_produk', 'penghargaan_produk')
-				        		->where('nama', 'LIKE', '%'.$search.'%')
-				       			->distinct()
-				       			->get();
-				$search_result = $search_result->merge($search_result2)->unique();
+	    		$result = collect();
+	    		$arr = $this->splitLabel($search);
+				for($j=0; $j<count($arr); $j++){
+					$search_result	= DB::table('products')
+			                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+			                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+			                		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+			               			->distinct()
+			               			->get();
+		   			$search_result2	= DB::table('labels')
+					        		->select('product_id', 'nama_produk', 'picture_produk',
+					        			'username_pembuat_produk', 'penghargaan_produk')
+					        		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+					       			->distinct()
+					       			->get();
+					$search_result = $search_result->merge($search_result2)->unique();
+					$result = $result->merge($search_result)->unique();
+				}
+				$search_result = $result;
+	    		
 	    	}
 		}
 		else{
@@ -213,21 +220,27 @@ class ProductController extends Controller
 		               			->get();
 	    	}
 	    	else{
-				$search_result	= DB::table('products')
-		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
-		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
-		                		->where('nama', 'LIKE', '%'.$search.'%')
-		                		->where('kategori', $kategori)
-		               			->distinct()
-		               			->get();
-		        $search_result2	= DB::table('labels')
-				        		->select('product_id', 'nama_produk', 'picture_produk',
-				        			'username_pembuat_produk', 'penghargaan_produk')
-				        		->where('nama', 'LIKE', '%'.$search.'%')
-				        		->where('kategori_produk', $kategori)
-				       			->distinct()
-				       			->get();
-				$search_result = $search_result->merge($search_result2)->unique();
+	    		$result = collect();
+	    		$arr = $this->splitLabel($search);
+				for($j=0; $j<count($arr); $j++){
+					$search_result	= DB::table('products')
+			                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+			                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+			                		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+			                		->where('kategori', $kategori)
+			               			->distinct()
+			               			->get();
+			        $search_result2	= DB::table('labels')
+					        		->select('product_id', 'nama_produk', 'picture_produk',
+					        			'username_pembuat_produk', 'penghargaan_produk')
+					        		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+					        		->where('kategori_produk', $kategori)
+					       			->distinct()
+					       			->get();
+					$search_result = $search_result->merge($search_result2)->unique();
+					$result = $result->merge($search_result)->unique();
+				}
+				$search_result = $result;
 			}
 	    }
 	    $product_new		= DB::table('products')
@@ -239,5 +252,20 @@ class ProductController extends Controller
                			 	->limit(4)
                			 	->get();
     	return View('home')->with(array('product_new' => $product_new, 'product_popular' => $product_popular, 'search_result' => $search_result));
+    }
+
+    public function search(Request $request){
+    	//validasi input dari form
+    	$this->validate($request, [
+    		'Name' => 'regex:/^[a-z\d\-_\s\;]+$/i|max:50',
+			'Category' => 'regex:/^[a-z\d\-_\s]+$/i|max:20',
+		]);
+
+    	$kategori = $request["Category"];
+    	$nama = $request["Name"];
+    	if($kategori=="semua produk"){
+    		$kategori = "all";
+    	}
+    	return redirect('/home/'.$kategori.'/'.$nama);
     }
 }
