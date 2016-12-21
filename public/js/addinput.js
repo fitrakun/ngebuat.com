@@ -1,18 +1,20 @@
-var counter = 1;
+var counteralat = 1;
 function addInput(divName){
     var newdiv = document.createElement('div');
     newdiv.className= 'row';
-    counter++;
-    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-5 addalatleft'> <input type='text' placeholder='Alat' class='form-control inputform' id='alat" + counter + "'> </div>";
+    counteralat++;
+    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-5 addalatleft'> <input type='text' placeholder='Alat' class='form-control inputform' id='alat" + counteralat + "'> </div>";
     document.getElementById(divName).appendChild(newdiv);
+    document.getElementById('countAlat').setAttribute('value',counteralat);
 }
 
-var counter2 = 1;
+var counterbahan = 1;
 function addInput2(divName){
     var newdiv = document.createElement('div');
     newdiv.className= 'row';
-    counter2++;
-    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-5 addalatleft'> <input type='text' placeholder='Bahan' class='form-control inputform' id='bahan" + counter2 + "'> </div>";
+    counterbahan++;
+    newdiv.innerHTML = "<div class='col-sm-3'></div> <div class='col-sm-5 addalatleft'> <input type='text' placeholder='Bahan' class='form-control inputform' id='bahan" + counterbahan + "'> </div>";
     document.getElementById(divName).appendChild(newdiv);
+    document.getElementById('countBahan').setAttribute('value',counterbahan);
 }
 

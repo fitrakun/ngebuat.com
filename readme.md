@@ -5,6 +5,9 @@ Location: `resources > views > html`
 ## css js img
 Location: `public` 
 
+# Notes
+In addProduct.blade.php line 203, the value of each picture in a step are using this format: `stepnumber-picturenumber`
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
