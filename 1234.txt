@@ -1,0 +1,8 @@
+-buat per kategori --> jatonya kyk search jadi home/nama_kategorinya
+-cara ngecek dia lg login ato blm --> tambahin
+if(Auth::check()){
+	//kalo dia uda login do smth
+}
+else{
+	//kalo dia blm login do smth
+}
