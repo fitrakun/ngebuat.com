@@ -98,6 +98,7 @@ class ProductController extends Controller
     	$product->kategori = $request["Category"];
     	$product->penjelasan = $request["Desc"];
     	$product->username_pembuat = $user->username;
+    	$product->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
 		$file = $request->file("Picture");
 		$filename = $product->id . ".jpg";
 		if($file != null){
