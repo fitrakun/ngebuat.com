@@ -186,6 +186,7 @@ class UserController extends Controller
 		}
 		else{
 			$user->isValid = 1;
+			$user->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
 			$user->save();
 			if(Auth::attempt(['username' => $user->username, 'password' => $user->password_no_encrypt, 'isValid' => 1])){
 				return redirect('dashboard');
