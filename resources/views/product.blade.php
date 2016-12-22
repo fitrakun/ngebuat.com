@@ -10,15 +10,35 @@
     <br><br>
     KARYA LAINNYA<br><br>
     @foreach ($product_other as $pOther)
-        {{ $pOther->nama}}
-        <br>
+        Nama : {{ $pOther->nama }}
+        <br><br>
+        Pembuat : {{ $pOther->username_pembuat }}
+        <br><br>
+        @if($pOther->penghargaan==0)
+            Tidak ada Penghargaan <br><br>
+        @else
+            Ada penghargaan <br><br>
+        @endif
+        <img src="../../{{ $pOther->picture}}" height=200 width=200><br><br>
+        <a href="../../showProduct/{{$pOther->id}}">link</a>
+        <br><br>
     @endforeach
     -------------------------------------------------------------
     <br><br>
     KARYA SERUPA<br><br>
     @foreach ($product_related as $pRelated)
-        {{ $pRelated->nama_produk}}
-        <br>
+        Nama : {{ $pRelated->nama_produk }}
+        <br><br>
+        Pembuat : {{ $pRelated->username_pembuat_produk }}
+        <br><br>
+        @if($pRelated->penghargaan_produk==0)
+            Tidak ada Penghargaan <br><br>
+        @else
+            Ada penghargaan <br><br>
+        @endif
+        <img src="../../{{ $pRelated->picture_produk}}" height=200 width=200><br><br>
+        <a href="../../showProduct/{{$pRelated->product_id}}">link</a>
+        <br><br>
     @endforeach
     -------------------------------------------------------------
     <br><br>
