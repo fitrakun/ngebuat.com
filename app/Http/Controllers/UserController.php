@@ -259,8 +259,9 @@ class UserController extends Controller
 
 	//fungsi coba2
 	public function pictura(Request $request){
-		$flights = User::where('username', 'alifbm')->get();
-		return View('test')->with(array('flights' => $flights));
+		return 1;
+		/*$flights = User::where('username', 'alifbm')->get();
+		return View('test')->with(array('flights' => $flights));*/
 		//return $string;
 		//return $flight;
 		//return view('test'. $flight);

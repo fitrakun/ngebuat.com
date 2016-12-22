@@ -224,7 +224,7 @@ class ProductController extends Controller
     }
 
     public function getStepPictures($id){
-    	$arr = Step::find($id)->StepPictures;
+    	$arr = StepPicture::where('step_id',$id)->get();
     	return $arr;
     }
 

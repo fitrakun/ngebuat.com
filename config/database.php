@@ -66,6 +66,22 @@ return [
             'engine' => null,
         ],
 
+        /*
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'port' => env('DB_PORT', '3306'),
+            'database' => 'ngebuatc_ngebuat',
+            'username' => 'ngebuatc_admin',
+            'password' => 'q1t8q2Wz7T',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+        */
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
