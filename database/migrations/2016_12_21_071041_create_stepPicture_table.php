@@ -32,6 +32,6 @@ class CreateStepPictureTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('Labels');
+        Schema::dropIfExists('StepPictures');
     }
 }

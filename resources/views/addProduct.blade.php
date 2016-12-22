@@ -6,7 +6,7 @@
 	<script>
 		var countAlat = 1;
 		var countBahan = 1;
-		var countStep = 1;
+		var countStep = 3;
 	</script>
 	<form action="{{ route('addProduct') }}" method="POST" enctype="multipart/form-data">
 		Nama : <input type="text" name="Name"> {{ $errors->first('Name') }}
@@ -41,9 +41,23 @@
 			Judul : <input type="text" name="judulstep1"><br><br> {{ $errors->first('judulstep1') }} 
 			Deskripsi : <input type="text" name="descstep1"><br><br> {{ $errors->first('descstep1') }} 
 			Gambar 1: <input type="file" name="step1-1"> {{ $errors->first('step1-1') }} <br><br>
-			Gambar 2: <input type="file" name="step1-2"> {{ $errors->first('step1-2') }} <br><br>
-			Gambar 3: <input type="file" name="step1-3"> {{ $errors->first('step1-3') }} <br><br>
+			<!--Gambar 2: <input type="file" name="step1-2"> {{ $errors->first('step1-2') }} <br><br>
+			Gambar 3: <input type="file" name="step1-3"> {{ $errors->first('step1-3') }} <br><br>-->
 		</div>
+		<!--<div id='langkah'>
+			Judul : <input type="text" name="judulstep2"><br><br> {{ $errors->first('judulstep1') }} 
+			Deskripsi : <input type="text" name="descstep2"><br><br> {{ $errors->first('descstep1') }} 
+			Gambar 1: <input type="file" name="step2-1"> {{ $errors->first('step1-1') }} <br><br>
+			Gambar 2: <input type="file" name="step2-2"> {{ $errors->first('step1-2') }} <br><br>
+		</div>
+		<div id='langkah'>
+			Judul : <input type="text" name="judulstep3"><br><br> {{ $errors->first('judulstep1') }} 
+			Deskripsi : <input type="text" name="descstep3"><br><br> {{ $errors->first('descstep1') }} 
+			Gambar 1: <input type="file" name="step3-1"> {{ $errors->first('step1-1') }} <br><br>
+			Gambar 2: <input type="file" name="step3-2"> {{ $errors->first('step1-2') }} <br><br>
+			Gambar 3: <input type="file" name="step3-3"> {{ $errors->first('step1-3') }} <br><br>
+			Gambar 3: <input type="file" name="step3-4"> {{ $errors->first('step1-3') }} <br><br>
+		</div>-->
 		<br>
 		<button type="button" onClick="addColumnStep();">add kolom</button>
 		<br><br>

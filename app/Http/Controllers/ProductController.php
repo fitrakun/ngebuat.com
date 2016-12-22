@@ -207,7 +207,7 @@ class ProductController extends Controller
     	return $arr;
     }
 
-    public function home($kategori = NULL, $search = NULL){
+    private function searchProduct($kategori, $search){
     	if($kategori==NULL){
     		$search_result = NULL;
     	}
@@ -275,6 +275,11 @@ class ProductController extends Controller
 				$search_result = $result;
 			}
 	    }
+    	return $search_result;
+    }
+
+    public function home($kategori = NULL, $search = NULL){
+    	$search_result = $this->searchProduct($kategori, $search);
 	    $product_new		= DB::table('products')
 	                		->orderBy('id', 'desc')
 	               			->limit(6)
