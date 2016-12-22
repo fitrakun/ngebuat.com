@@ -22,6 +22,11 @@
 		<br><br>
 		biodata : <input type="text" name="Bio" value="{{$biodata}}"> {{ $errors->first('Bio') }}
 		<br><br>
+		tanggal lahir : <input type="text" name="Date" value="{{$date}}">
+		bulan lahir : <input type="text" name="Month" value="{{$month}}">
+		tahun lahir : <input type="text" name="Year" value="{{$year}}">
+		{{ $errors->first('Birthdate') }}
+		<br><br>
 		<img src="{{ $picture }}" width=100 height=100>
 		<br><br>
 		Profile Picture : <input type="file" name="ProfPic">

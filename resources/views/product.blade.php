@@ -3,6 +3,25 @@
 	<title></title>
 </head>
 <body>
+    TENTANG CREATOR<br><br>
+    {{ $pembuat_produk->username }} <br><br>
+    {{ $pembuat_produk->biodata }} <br><br>
+    -------------------------------------------------------------
+    <br><br>
+    KARYA LAINNYA<br><br>
+    @foreach ($product_other as $pOther)
+        {{ $pOther->nama}}
+        <br>
+    @endforeach
+    -------------------------------------------------------------
+    <br><br>
+    KARYA SERUPA<br><br>
+    @foreach ($product_related as $pRelated)
+        {{ $pRelated->nama_produk}}
+        <br>
+    @endforeach
+    -------------------------------------------------------------
+    <br><br>
     @if($product->isVerified==0)
         UNVERIFIED <br><br>
     @else
@@ -23,6 +42,12 @@
     Likes : {{ $product->likes }}
     <br><br>
     Views : {{ $product->views }}
+    <br><br>
+    LABEL : <br><br>
+    @foreach ($labels as $label)
+        {{ $label}}
+        <br>
+    @endforeach
     <br><br>
 	Alat : <br><br>
 	@foreach ($tools as $tool)

@@ -114,6 +114,17 @@ class UserController extends Controller
 			$data['negara'] = $user->negara;
 			$data['biodata'] = $user->biodata;
 			$data['picture'] = $user->picture;
+			if($user->tanggal_lahir!=''){
+				$birthdate = explode("-", $user->tanggal_lahir);
+				$data['date'] = $birthdate[0];
+				$data['month'] = $birthdate[1];
+				$data['year'] = $birthdate[2];
+			}
+			else{
+				$data['date'] = '';
+				$data['month'] = '';
+				$data['year'] = '';
+			}
 			return View('editprofile', $data);
     	}
     	else{
@@ -180,21 +191,25 @@ class UserController extends Controller
 	}
 
 	public function confirmSignUp($token){
-		$user = User::where('confirmation_token', $token)->where('isValid', 0)->first();
-		if(!$user){
-			return "page not found";
-		}
-		else{
-			$user->isValid = 1;
-			$user->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
-			$user->save();
-			if(Auth::attempt(['username' => $user->username, 'password' => $user->password_no_encrypt, 'isValid' => 1])){
-				return redirect('dashboard');
+		if($token!="banned"){
+			$user = User::where('confirmation_token', $token)->where('isValid', 0)->first();
+			if(!$user){
+				return "page not found";
+			}
+			else{
+				$user->isValid = 1;
+				$user->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
+				$user->save();
+				if(Auth::attempt(['username' => $user->username, 'password' => $user->password_no_encrypt, 'isValid' => 1])){
+					return redirect('dashboard');
+				}
 			}
 		}
 	}
 	
 	public function editProfile(Request $request){
+		$request['Birthdate'] = $request['Date'] . '-' . $request['Month'] . '-' . $request['Year'];
+		
 		$this->validate($request, [
 			'Name' => 'regex:/^[\pL\s\-]+$/u|max:20',
 			'Bio' => 'max:200',
@@ -206,7 +221,8 @@ class UserController extends Controller
 			'Website' => ['max:50',
 			'regex:/^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/'
 			],
-			'ProfPic' => 'image'
+			'ProfPic' => 'image',
+			'Birthdate' => 'Date'
 		]);
 
 		$user = User::find($request->user()->id);
@@ -234,6 +250,7 @@ class UserController extends Controller
 			$file->move('img//users', $filename);
 			$user->picture = "img//users//" . $filename;
 		}
+		$user->tanggal_lahir = $request['Birthdate'];
 		
 		$user->save();
 

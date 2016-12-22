@@ -192,13 +192,34 @@ class ProductController extends Controller
 			return redirect('/dashboard');
 		}
 		else{
+			$user = User::where('username', $product->username_pembuat)->first();
+			$product_other = Product::where('username_pembuat', $user->username)
+							->whereNotIn('id', [$id])
+							->take(3)
+							->inRandomOrder()
+							->get();
+			$product_related = collect();
+			$arrLabel = $this->splitLabel($product->label);
+			foreach($arrLabel as $label){
+				$result = $this->searchProduct("all", $label);
+				$product_related = $product_related->merge($result)->unique();
+			}
+			foreach ($product_related as $key => $value) {
+		      if ($product_related[$key]->product_id == $product->id) {
+	          	$product_related->forget($key);
+		      }
+			}
+			if($product_related->count()>3){
+				$product_related = $product_related->random(3);
+			}
 			$product->views++;
 			$product->save();
 			$tools = Tool::where('product_id', $id)->get();
 			$materials = Material::where('product_id', $id)->get();
 			$steps = Step::where('product_id', $id)->get();
 			return View('product')->with(array('product' => $product, 'tools' => $tools, 'materials' => $materials, 
-				'steps' => $steps, 'productCtrl' => new ProductController));
+				'steps' => $steps, 'labels' => $arrLabel, 'productCtrl' => new ProductController, 'pembuat_produk' => $user,
+				'product_other' => $product_other, 'product_related' => $product_related));
 		}
     }
 
