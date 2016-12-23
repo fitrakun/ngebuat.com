@@ -30,7 +30,7 @@ class UserController extends Controller
 	        $random_char = $valid_chars[$random_pick-1];
 	        $random_string .= $random_char;
 	    }
-	    $date = Carbon::now('Asia/jakarta')->format('dmyHis');
+	    $date = Carbon::now('Asia/Jakarta')->format('dmyHis');
 	    $random_string .= $date;
 	    return $random_string;
 	}
@@ -39,7 +39,7 @@ class UserController extends Controller
     public function date(){
     	$date_example = "qi3fe1r5vnfov241116171927";
     	$date_substr = substr($date_example,13);
-    	$date = Carbon::createFromFormat('dmyHis', $date_substr, 'Asia/jakarta');
+    	$date = Carbon::createFromFormat('dmyHis', $date_substr, 'Asia/Jakarta');
     	echo $date;
     	echo "<br>";
     	echo "<br>";
@@ -47,7 +47,7 @@ class UserController extends Controller
     	echo $date;
     	echo "<br>";
     	echo "<br>";
-    	$now = Carbon::now('Asia/jakarta');
+    	$now = Carbon::now('Asia/Jakarta');
     	echo $now;
     	echo "<br>";
     	echo "<br>";

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class StepPicture extends Model
 {
     //
-    protected $table = "stepPictures";
+    protected $table = "steppictures";
 
     public $timestamps = false;
 }
