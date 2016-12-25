@@ -10,12 +10,17 @@
         var token = "{{ csrf_token() }}";
         var url = '/like';
         $.post(url, {id: "{{$product->id}}", _token: token}, function(data){
-            if(data["button"]=="liked"){
-                data["button"]="dislike";
-            }
-            $("#like").html(data["button"]);
-            $("#jml_like").html(data["value"]);
-           console.log(data);
+            if(data["status"]!="failed"){
+                if(data["button"]=="liked"){
+                    data["button"]="dislike";
+                }
+                $("#like").html(data["button"]);
+                $("#jml_like").html(data["value"]);
+               console.log(data);
+           }
+           else{
+                window.location = "/login";
+           }
         });
     }
     </script>
