@@ -1,8 +1,33 @@
 <html>
 <head>
-	<title></title>
+    <title></title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
 </head>
 <body>
+    <script>
+    function like(){
+        var token = "{{ csrf_token() }}";
+        var url = '/like';
+        $.post(url, {id: "{{$product->id}}", _token: token}, function(data){
+            if(data["button"]=="liked"){
+                data["button"]="dislike";
+            }
+            $("#like").html(data["button"]);
+            $("#jml_like").html(data["value"]);
+           console.log(data);
+        });
+    }
+    </script>
+    @if($like==NULL)
+    @else
+        @if($like=="liked")
+            <?php
+                $like="dislike"
+            ?>
+        @endif
+        <button onclick="like()"><span id="like">{{$like}}</span></button><br><br>
+    @endif
     TENTANG CREATOR<br><br>
     {{ $pembuat_produk->username }} <br><br>
     {{ $pembuat_produk->biodata }} <br><br>
@@ -49,17 +74,17 @@
     @endif
     <img src="../{{ $product->picture}}" height=200 width=200>
     <br><br>
-	Nama : {{ $product->nama }}
-	<br><br>
-	Kesulitan : {{ $product->kesulitan }}
-	<br><br>
-	Harga : {{ $product->harga }}
-	<br><br>
-	Kategori : {{ $product->kategori }}
-	<br><br>
-	Penjelasan : {{ $product->penjelasan }}
-	<br><br>
-    Likes : {{ $product->likes }}
+    Nama : {{ $product->nama }}
+    <br><br>
+    Kesulitan : {{ $product->kesulitan }}
+    <br><br>
+    Harga : {{ $product->harga }}
+    <br><br>
+    Kategori : {{ $product->kategori }}
+    <br><br>
+    Penjelasan : {{ $product->penjelasan }}
+    <br><br>
+    Likes : <span id="jml_like">{{ $product->likes }}</span>
     <br><br>
     Views : {{ $product->views }}
     <br><br>
@@ -69,8 +94,8 @@
         <br>
     @endforeach
     <br><br>
-	Alat : <br><br>
-	@foreach ($tools as $tool)
+    Alat : <br><br>
+    @foreach ($tools as $tool)
         {{ $tool->nama}}
         <br>
     @endforeach

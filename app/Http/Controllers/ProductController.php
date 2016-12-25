@@ -9,9 +9,11 @@ use App\Tool;
 use App\Material;
 use App\Label;
 use App\StepPicture;
+use App\Like;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -186,7 +188,7 @@ class ProductController extends Controller
     	return redirect('/dashboard');
     }
 
-    public function showProduct($id){
+    public function showProduct($id, Request $request){
 		$product = Product::where('id', $id)->first();
 		if($product==NULL){
 			return redirect('/dashboard');
@@ -217,9 +219,24 @@ class ProductController extends Controller
 			$tools = Tool::where('product_id', $id)->get();
 			$materials = Material::where('product_id', $id)->get();
 			$steps = Step::where('product_id', $id)->get();
+			if(Auth::check()){
+				$user = $request->user();	
+				$likes = Like::where('username', $user->username)
+	    				->where('product_id', $id)
+	    				->first();
+	    		if($likes==NULL){
+	    			$like = "like";
+	    		}
+	    		else{
+	    			$like = "liked";
+	    		}
+			}
+			else{
+				$like = NULL;
+			}
 			return View('product')->with(array('product' => $product, 'tools' => $tools, 'materials' => $materials, 
 				'steps' => $steps, 'labels' => $arrLabel, 'productCtrl' => new ProductController, 'pembuat_produk' => $user,
-				'product_other' => $product_other, 'product_related' => $product_related));
+				'product_other' => $product_other, 'product_related' => $product_related, 'like' => $like));
 		}
     }
 
@@ -325,5 +342,57 @@ class ProductController extends Controller
     		$kategori = "all";
     	}
     	return redirect('/home/'.$kategori.'/'.$nama);
+    }
+
+    public function like(Request $request){
+    	$id = $request["id"];
+    	if(Auth::check()){
+    		$user = $request->user();
+    		$product = Product::where('id', $id)->first();
+    		if($product==NULL){
+				return redirect('/dashboard');
+			}
+    		else{
+	    		$likes = Like::where('username', $user->username)
+	    				->where('product_id', $id)
+	    				->first();
+	    		if($likes==NULL){
+	    			$like = new Like();
+	    			$like->username = $user->username;
+	    			$like->product_id = $id;
+	    			$like->save();
+	    			
+	    			$product->likes++;
+	    			$product->save();
+	    			return [
+	    				'status' => "success",
+	    				'button' => 'liked',
+	    				'value' => $product->likes
+			        ];
+	    		}
+	    		else{
+	    			DB::table('likes')->where('username', $user->username)->where('product_id', $id)->delete();
+
+	    			$product->likes--;
+	    			$product->save();
+	    			return [
+			            'status' => "success",
+	    				'button' => 'like',
+	    				'value' => $product->likes
+			        ];
+	    		}
+    		}
+    	}
+    	else{
+    		return [
+	            'status' => "failed",
+	        ];
+    	}
+    }
+
+    //fungsi testing
+    public function test(){
+    	$msg = "babix";
+      	return response()->json(array('msg'=> $msg), 200);
     }
 }

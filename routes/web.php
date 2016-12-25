@@ -47,10 +47,19 @@ Route::group(['middleware' => 'web'],  function(){
 	});*/
 
 	//cobacoba
-	Route::get('/pictura', [
-		'uses' => 'UserController@pictura',
+	Route::post('/pictura', [
+		'uses' => 'ProductController@like',
 		'as' => 'pictura'
 	]);
+
+	Route::post('/like', [
+		'uses' => 'ProductController@like',
+		'as' => 'like'
+	]);
+
+	Route::get('/babix/{id}/{test}', function(){
+		return view('message');
+	});
 
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
@@ -96,4 +105,5 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@search',
 		'as' => 'search'
 	]);
+
 });
