@@ -10,6 +10,8 @@ use App\Material;
 use App\Label;
 use App\StepPicture;
 use App\Like;
+use App\Comment;
+use App\Subcomment;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -114,7 +116,7 @@ class ProductController extends Controller
     	$product->kategori = $request["Category"];
     	$product->penjelasan = $request["Desc"];
     	$product->username_pembuat = $user->username;
-    	$product->created_at = Carbon::now('Asia/jakarta')->format('d-m-y-H:i:s');
+    	$product->created_at = Carbon::now('Asia/Jakarta')->format('d-m-y-H:i:s');
     	$product->picture = "temporary";
     	$product->save();
 		$file = $request->file("Picture");
@@ -234,9 +236,13 @@ class ProductController extends Controller
 			else{
 				$like = NULL;
 			}
+			$comments = Comment::where('product_id', $id)->get();
+			$request->session()->put('id_produk', $id);
+			$request->session()->put('creator_produk', $product->username_pembuat);
 			return View('product')->with(array('product' => $product, 'tools' => $tools, 'materials' => $materials, 
 				'steps' => $steps, 'labels' => $arrLabel, 'productCtrl' => new ProductController, 'pembuat_produk' => $user,
-				'product_other' => $product_other, 'product_related' => $product_related, 'like' => $like));
+				'product_other' => $product_other, 'product_related' => $product_related, 'like' => $like,
+				'comments' => $comments));
 		}
     }
 
@@ -390,9 +396,35 @@ class ProductController extends Controller
     	}
     }
 
-    //fungsi testing
-    public function test(){
-    	$msg = "babix";
-      	return response()->json(array('msg'=> $msg), 200);
+    public function addComment(request $request){
+    	if(Auth::check()){
+    		$this->validate($request, [
+	    		'BodyCmt' => 'max:500|required',
+				'PictureCmt' => 'image',
+			]);
+
+    		$user = $request->user();
+    		$comment = new Comment();
+    		$comment->username = $user->username;
+    		$comment->picture_user = $user->picture;
+    		$comment->body = $request["BodyCmt"];
+    		$comment->created_at = Carbon::now('Asia/Jakarta')->format('d-m-y-H:i:s');
+    		$comment->username_pembuat_produk = $request->session()->get('creator_produk');
+    		$comment->product_id = $request->session()->get('id_produk');
+    		$comment->save();
+
+    		$file = $request->file("PictureCmt");
+			$filename = $comment->id . ".jpg";
+			if($file != null){
+				$file->move('img//comment', $filename);
+				$comment->picture = "img//comment//" . $filename;
+			}
+			$comment->save();
+
+			return redirect("/showProduct/". $request->session()->get('id_produk'));
+    	}
+    	else{
+    		return redirect("/login");
+    	}
     }
 }

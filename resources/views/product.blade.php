@@ -93,25 +93,25 @@
     <br><br>
     Views : {{ $product->views }}
     <br><br>
-    LABEL : <br><br>
+    <b>LABEL</b> : <br><br>
     @foreach ($labels as $label)
         {{ $label}}
         <br>
     @endforeach
     <br><br>
-    Alat : <br><br>
+    <b>Alat</b> : <br><br>
     @foreach ($tools as $tool)
         {{ $tool->nama}}
         <br>
     @endforeach
     <br><br>
-    Bahan : <br><br>
+    <b>Bahan</b> : <br><br>
     @foreach ($materials as $material)
         {{ $material->nama}}
         <br>
     @endforeach
     <br><br>
-    Langkah : <br><br>
+    <b>Langkah</b> : <br><br>
     @foreach ($steps as $step)
         Judul : {{ $step->judul}}
         <br><br>
@@ -130,5 +130,23 @@
         <br><br>
     @endforeach
     <br><br>
+    <b>KOMENTAR</b> <br><br>
+    @foreach ($comments as $comment)
+        {{$comment->username}} <br>
+        {{$comment->body}} <br>
+        @if($comment->picture!=NULL)
+            <img src="../{{ $comment->picture}}" height=200 width=200>
+        @endif
+        <br>
+        -----------------------------------
+        <br><br>
+    @endforeach
+    <br><br>
+    <form action="{{ route('addComment') }}" method="POST" enctype="multipart/form-data">
+        <input size=100 type="text" name="BodyCmt"><br><br>
+        <input type="file" name="PictureCmt"><br><br>
+        <input type="hidden" name="_token" value="{{ Session::token() }}">
+        <input type="submit">
+    </form>
 </body>
 </html>

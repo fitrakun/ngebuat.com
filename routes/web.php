@@ -106,4 +106,8 @@ Route::group(['middleware' => 'web'],  function(){
 		'as' => 'search'
 	]);
 
+	Route::post('/addComment', [
+		'uses' => 'ProductController@addComment',
+		'as' => 'addComment'
+	]);
 });
