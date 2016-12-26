@@ -7,7 +7,7 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{$product->nama}}" />
     <meta property="og:description"   content="See my new product" />
-    <meta property="og:image"         content="{{$product->picture}}}" />
+    <meta property="og:image"         content="www.ngebuat.com/daeun/{{$product->picture}}}" />
 </head>
 <body>
     <script>
