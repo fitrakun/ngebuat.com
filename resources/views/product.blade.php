@@ -3,6 +3,11 @@
     <title></title>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
       </script>
+    <meta property="og:url"           content="http://www.ngebuat.com/daeun/showProduct/{{$product->id}}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{$product->nama}}" />
+    <meta property="og:description"   content="See my new product" />
+    <meta property="og:image"         content="{{$product->picture}}}" />
 </head>
 <body>
     <script>
@@ -24,6 +29,17 @@
         });
     }
     </script>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="fb-share-button" data-href="http://www.ngebuat.com/daeun/showProduct/&#123;&#123;$product-&gt;id&#125;&#125;" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.ngebuat.com%2Fdaeun%2FshowProduct%2F%257B%257B%24product-%3Eid%257D%257D&amp;src=sdkpreparse">Share</a></div>
     @if($like==NULL)
     @else
         @if($like=="liked")
@@ -133,6 +149,10 @@
     <b>KOMENTAR</b> <br><br>
     @foreach ($comments as $comment)
         {{$comment->username}} <br>
+        <?php
+            $subDate = $productCtrl->substractDate($comment->created_at);
+        ?>
+        {{ $subDate }}<br><br>
         {{$comment->body}} <br>
         @if($comment->picture!=NULL)
             <img src="../{{ $comment->picture}}" height=200 width=200>

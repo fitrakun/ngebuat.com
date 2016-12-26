@@ -427,4 +427,24 @@ class ProductController extends Controller
     		return redirect("/login");
     	}
     }
+
+    public function substractDate($date){
+    	$date = Carbon::createFromFormat('d-m-y-H:i:s', $date, 'Asia/Jakarta');
+    	$now = Carbon::now('Asia/Jakarta');
+    	$str = $date->diffForHumans($now);
+    	$str = str_replace("seconds","detik",$str);
+    	$str = str_replace("second","detik",$str);
+    	$str = str_replace("minutes","menit",$str);
+    	$str = str_replace("minute","menit",$str);    	
+    	$str = str_replace("hours","jam",$str);
+    	$str = str_replace("hour","jam",$str);
+    	$str = str_replace("days","hari",$str);
+    	$str = str_replace("day","hari",$str);
+    	$str = str_replace("months","bulan",$str);
+    	$str = str_replace("month","bulan",$str);
+    	$str = str_replace("years","tahun",$str);
+    	$str = str_replace("year","tahun",$str);
+    	$str = str_replace("before","yang lalu",$str);
+    	return $str;
+    }
 }
