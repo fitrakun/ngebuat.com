@@ -7,7 +7,7 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{$product->nama}}" />
     <meta property="og:description"   content="See my new product" />
-    <meta property="og:image"         content="www.ngebuat.com/daeun/{{$product->picture}}}" />
+    <meta property="og:image"         content="http://www.ngebuat.com/daeun/{{$product->picture}}" />
 </head>
 <body>
     <script>
@@ -39,7 +39,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="fb-share-button" data-href="http://www.ngebuat.com/daeun/showProduct/&#123;&#123;$product-&gt;id&#125;&#125;" data-layout="button" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.ngebuat.com%2Fdaeun%2FshowProduct%2F%257B%257B%24product-%3Eid%257D%257D&amp;src=sdkpreparse">Share</a></div>
+    <div class="fb-share-button" data-href="https://www.ngebuat.com/daeun/showProduct/{{$product->id}}" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngebuat.com%2Fdaeun%2FshowProduct%2F{{$product->id}}&amp;src=sdkpreparse">Share</a></div>
     @if($like==NULL)
     @else
         @if($like=="liked")
