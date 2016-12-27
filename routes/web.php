@@ -42,6 +42,10 @@ Route::group(['middleware' => 'web'],  function(){
 		'as' => 'changePassword'
 	]);
 
+	Route::get('/profile/{username}', [
+		'uses' => 'UserController@viewProfile',
+	]);
+
 	/*Route::get('/pictura', function(){
 		return view('test');
 	});*/

@@ -447,4 +447,5 @@ class ProductController extends Controller
     	$str = str_replace("before","yang lalu",$str);
     	return $str;
     }
+
 }

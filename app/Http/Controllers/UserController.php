@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Product;
 use Mail;
 use Carbon\Carbon;
 use \Hash;
@@ -132,6 +133,18 @@ class UserController extends Controller
     		$request->session()->put('msg', 'Harap signin terlebih dahulu');
     		return redirect('/login');
     	}
+	}
+
+	public function viewProfile($username){
+		$user = User::where('username', $username)->where('isValid', 1)->first();
+		if($user!=NULL){
+			$product = Product::where('username_pembuat', $username)->get();
+			$product_ach = Product::where('username_pembuat', $username)->where('penghargaan', 1)->get();
+			return View('profile')->with(array('products' => $product, 'user' => $user, 'ach' => $product_ach->count()));
+		}
+		else{
+			return redirect('/home');
+		}
 	}
     
 	public function postSignUp(Request $request){
