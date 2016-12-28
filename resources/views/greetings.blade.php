@@ -43,20 +43,23 @@
 	filter by kategori --> home/"kategorinya"
 	<br>
 	Lihat karya	
+	<br>
+	like --> showProduct/"id_produknya"
+	<br> 
+	komen --> showProduct/"id_produknya"
+	<br>
+	send email --> pas sign up uda otomatis
+	<br>
+	share fb --> showProduct/"id_produknya"
+	<br>
+	your profile -> profile/"username yang dicari"
+	<br>
 	<br><br><br>
 	------------------------------------
 	<br><br><br>
 
 	fitur yang belom =<br>
-	like
-	<br>
-	komen
-	<br>
-	send email
-	<br>
-	share fb
-	<br>
-	your profile
+	subkomen
 	<br>
 	editproduct
 	<br>

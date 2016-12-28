@@ -114,6 +114,7 @@ class ProductController extends Controller
     	$product->kesulitan = $request["Level"];
     	$product->harga = $request["Price"];
     	$product->kategori = $request["Category"];
+    	$product->label = $request["Label"];
     	$product->penjelasan = $request["Desc"];
     	$product->username_pembuat = $user->username;
     	$product->created_at = Carbon::now('Asia/Jakarta')->format('d-m-y-H:i:s');
@@ -167,6 +168,7 @@ class ProductController extends Controller
 			$langkah->judul = $request[$temp];
 			$temp = "descstep" . $i;
 			$langkah->penjelasan = $request[$temp];
+			$langkah->order = $i;
 			$langkah->save();
 
 			$j=1;
@@ -179,6 +181,7 @@ class ProductController extends Controller
 					$file->move('img//product', $filename);
 					$stepPic->step_id = $langkah->id;
 					$stepPic->picture = "img//product//" . $filename;
+					$stepPic->order = $j;
 					$stepPic->save();
 				}
 				else{

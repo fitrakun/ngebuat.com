@@ -146,7 +146,7 @@ class UserController extends Controller
 			return redirect('/home');
 		}
 	}
-    
+
 	public function postSignUp(Request $request){
     	//bikin validasi
 		$this->validate($request, [
@@ -161,15 +161,16 @@ class UserController extends Controller
 		$user->password = bcrypt($request['Password']);
 		$user->password_no_encrypt = $request['Password'];
 		$user->confirmation_token = $this->randomTokenGenerator(13);
-
+		
 		$data = array( 'email' => $user->email, 'token' =>  $user->confirmation_token);
 		Mail::send('emails', $data, function($message) use ($data)
 		{
 		    $msg = 'Hi, selamat telah berhasil mendaftar pada www.ngebuat.com' . "<br>";
-		    $msg .= "silahkan kunjungi www.ngebuat.com/confirm/" . $data['token'] . " untuk menyelesaikan proses registrasi\n";
+		    $msg .= "silahkan kunjungi <a href=\"www.ngebuat.com/confirm/" . $data['token'] . "\">confirm here</a> untuk menyelesaikan proses registrasi\n";
 		    $message->to($data['email'])->subject('Konfirmasi registrasi')
 		    ->setBody($msg);;
 		});
+		$user->save();
 		$user->save();
 		return redirect('/');
 	}

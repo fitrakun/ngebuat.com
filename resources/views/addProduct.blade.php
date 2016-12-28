@@ -45,14 +45,14 @@
 			Gambar 3: <input type="file" name="step1-3"> {{ $errors->first('step1-3') }} <br><br>
 		</div>
 		<div id='langkah'>
-			Judul : <input type="text" name="judulstep2"><br><br> {{ $errors->first('judulstep1') }} 
-			Deskripsi : <input type="text" name="descstep2"><br><br> {{ $errors->first('descstep1') }} 
+			Judul : <input type="text" name="judulstep2"><br><br> {{ $errors->first('judulstep2') }} 
+			Deskripsi : <input type="text" name="descstep2"><br><br> {{ $errors->first('descstep2') }} 
 			Gambar 1: <input type="file" name="step2-1"> {{ $errors->first('step2-1') }} <br><br>
 			Gambar 2: <input type="file" name="step2-2"> {{ $errors->first('step2-2') }} <br><br>
 		</div>
 		<div id='langkah'>
-			Judul : <input type="text" name="judulstep3"><br><br> {{ $errors->first('judulstep1') }} 
-			Deskripsi : <input type="text" name="descstep3"><br><br> {{ $errors->first('descstep1') }} 
+			Judul : <input type="text" name="judulstep3"><br><br> {{ $errors->first('judulstep3') }} 
+			Deskripsi : <input type="text" name="descstep3"><br><br> {{ $errors->first('descstep3') }} 
 			Gambar 1: <input type="file" name="step3-1"> {{ $errors->first('step3-1') }} <br><br>
 			Gambar 2: <input type="file" name="step3-2"> {{ $errors->first('step3-2') }} <br><br>
 			Gambar 3: <input type="file" name="step3-3"> {{ $errors->first('step3-3') }} <br><br>
@@ -63,7 +63,7 @@
 		<br><br>
 		<input type="hidden" id="countAlat" name="countAlat" value='1'>
 		<input type="hidden" id="countBahan" name="countBahan" value='1'>
-		<input type="hidden" id="countStep" name="countStep" value='1'>
+		<input type="hidden" id="countStep" name="countStep" value='3'>
 		<input type="hidden" name="_token" value="{{ Session::token() }}">
 		<input type="submit">
 	</form>	

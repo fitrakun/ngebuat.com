@@ -34,7 +34,7 @@
 		@endif
 	@endif
 	<br><br>
-	baru : <br><br>
+	<b>baru</b> : <br><br>
 	@foreach ($product_new as $product)
         Nama : {{ $product->nama }}
         <br><br>
@@ -50,7 +50,7 @@
 		<br><br>
     @endforeach
 	<br><br>
-	popular : <br><br>
+	<b>popular</b> : <br><br>
 	@foreach ($product_popular as $product)
         Nama : {{ $product->nama }}
         <br><br>
