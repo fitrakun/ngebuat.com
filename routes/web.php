@@ -125,10 +125,6 @@ Route::group(['middleware' => 'web'],  function(){
 		'as' => 'subs'
 	]);
 
-	Route::get('/subscribe', [
-		'uses' => 'UserController@viewSubscribe',
-	]);
-
         Route::get('/aboutus', function(){
 		return view('aboutus');
 	});
