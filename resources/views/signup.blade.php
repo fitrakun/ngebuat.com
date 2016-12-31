@@ -4,14 +4,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('css/media.css')}}">
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <meta name="description" content="Home Page">
         <title> SignUp - Ngebuat.com</title>
     </head>
 <body>
 	<div class="container-fluid indexbody">
             <nav class="navigation row">
-                    <div class="col-md-2 space"></div>
-                    <div class="col-md-2 nopadding">
+                    <div class="col-md-2 col-xs-2 space"></div>
+                    <div class="col-md-2 col-xs-3 nopadding">
                         <input type="text" class="form-control input-sm searchtutorial" placeholder="Ayo cari tutorialnya" />
                     </div>
                     <div class="col-md-1 nopadding"><a href="#"><img class="img-responsive searchbutton btn-navbar" src="{{asset('img/BAR-04.png')}}"></a></div>

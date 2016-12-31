@@ -193,6 +193,20 @@ class ProductController extends Controller
     	return redirect('/dashboard');
     }
 
+    public function viewEditProduct($id, Request $request){
+    	if(Auth::check()){
+			$data = [];
+			$data['product'] = Product::where('id', $id)->first();
+			$data['tools'] = Tool::where('product_id', $id)->get();
+			$data['materials'] = Material::where('product_id', $id)->get();
+			return View('editprofile', $data);
+    	}
+    	else{
+    		$request->session()->put('msg', 'Harap signin terlebih dahulu');
+    		return redirect('/login');
+    	}
+    }
+
     public function showProduct($id, Request $request){
 		$product = Product::where('id', $id)->first();
 		if($product==NULL){
@@ -450,5 +464,4 @@ class ProductController extends Controller
     	$str = str_replace("before","yang lalu",$str);
     	return $str;
     }
-
 }

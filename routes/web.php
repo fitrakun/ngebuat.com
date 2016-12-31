@@ -114,4 +114,13 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@addComment',
 		'as' => 'addComment'
 	]);
+
+	Route::post('/subscribe', [
+		'uses' => 'UserController@subscribe',
+		'as' => 'subs'
+	]);
+
+	Route::get('/subscribe', [
+		'uses' => 'UserController@viewSubscribe',
+	]);
 });

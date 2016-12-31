@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Subscribe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Product;
@@ -65,6 +66,10 @@ class UserController extends Controller
     	else{
     		return view('signup');
     	}
+    }
+
+    public function viewSubscribe(){
+    	return view('subscribe');
     }
 
     public function viewLogin(Request $request){
@@ -165,12 +170,8 @@ class UserController extends Controller
 		$data = array( 'email' => $user->email, 'token' =>  $user->confirmation_token);
 		Mail::send('emails', $data, function($message) use ($data)
 		{
-		    $msg = 'Hi, selamat telah berhasil mendaftar pada www.ngebuat.com' . "<br>";
-		    $msg .= "silahkan kunjungi <a href=\"www.ngebuat.com/confirm/" . $data['token'] . "\">confirm here</a> untuk menyelesaikan proses registrasi\n";
-		    $message->to($data['email'])->subject('Konfirmasi registrasi')
-		    ->setBody($msg);;
+		    $message->to($data['email'])->subject('Konfirmasi registrasi');
 		});
-		$user->save();
 		$user->save();
 		return redirect('/');
 	}
@@ -296,5 +297,17 @@ class UserController extends Controller
 		else{
 			$file->move('uploads', $name);	
 		}*/
+	}
+
+	public function subscribe(Request $request){
+		$this->validate($request, [
+			'Email' => 'required|email|unique:subscribe',
+		]);
+
+		$subscribe = new Subscribe();
+		$subscribe->email = $request["Email"];
+		$subscribe->created_at = Carbon::now('Asia/Jakarta')->format('d-m-y-H:i:s');
+		$subscribe->save();
+		return redirect('/home');
 	}
 }
