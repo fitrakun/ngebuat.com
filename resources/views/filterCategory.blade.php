@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -9,12 +9,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <meta name="description" content="Login Page">
-        <title> My Profile - Ngebuat.com</title>
+        <title> {{ $search_query }} - Ngebuat.com</title>
 </head>
 <body>
-        <div class="container-fluid indexbody">
-                @if(Auth::check())
-                   <nav class="navigation row">
+@if($search_query=="dekorasi")
+<?php $classbody = "dekorasibody"?>
+@elseif($search_query=="kerajinan")
+<?php $classbody = "kerajinanbody"?>
+@elseif($search_query=="masakan")
+<?php $classbody = "masakanbody"?>
+@elseif($search_query=="teknologi")
+<?php $classbody = "teknologibody"?>
+@else
+<?php $classbody = "indexbody"?>
+@endif
+<div class="container-fluid {{$classbody}}">
+            @if(Auth::check())
+<nav class="navigation row">
                     <div class="col-md-2 col-xs-2 space"></div>
                     <div class="col-md-2 col-xs-3 nopadding">
                         <form action="{{ route('search') }}" method="POST" enctype="multipart/form-data">
@@ -31,7 +42,7 @@
 <img class="profile-thumbnail nopadding col-md-3" src="../{{Auth::user()->picture}}"><div class="col-md-8"><span class="nopadding profilename">{{Auth::user()->username}}</span><span class="caret"></span></div><div class="col-md-1"></div>
                             </button>
                             <ul class="dropdown-menu dropdownprofile" role="menu" aria-labelledby="menu1">
-                              <li role="presentation"><a role="menuitem" href="http://ngebuat.com/daeun/profile/{{Auth::user()->username}}">
+                              <li role="presentation"><a role="menuitem" href="#">
                                   <div class="row">
                                     <img class="col-md-4" src="../{{Auth::user()->picture}}">
                                     <span class="col-md-2">Profilku</span>
@@ -91,112 +102,26 @@
                 </script>
             </nav>
             @endif
-                    <div class="container whitebackground">
-                <div class="namaprofile col-md-12">
-                    @if(empty($user->nama))
-                        <div class="username">{{$user->username}}</div>
-                    @else
-                    <div class="username">{{$user->nama}}</div>
-                    @endif
+        <div class="container80">
+                <div class="headerdekorasi whitebackground">
+                    <img class="background-headerdekorasi" src="../img/BAR-Title.png">
+                    <span class="text-headerdekorasi">{{$search_query}}</span>
                 </div>
-                <div class="profiledetails">
-                    <div class="row">
-                        <div class="col-md-5 center-block">
-                            <img class="fotoprofile" src="../{{Auth::user()->picture}}">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="detailprofil">
-                                <div class="row kontenprofil">
-                                    <div class="col-md-4 labelprofil">Tanggal Lahir</div>
-                                    <div class="col-md-8">{{$user->tanggal_lahir}}</div>
-                                </div>
-                                <div class="row kontenprofil">
-                                    <div class="col-md-4 labelprofil">Bio</div>
-                                    <div class="col-md-8">{{$user->biodata}}</div>
-                                </div>
-                                <div class="row">
-                                    @if($user->gender=="L")
-                                    <img class="genderprofil" src="../img/COWOK.png">
-                                    @elseif ($user->gender=="P")
-                                    <img class="genderprofil" src="../img/CEWEK.png">
-                                    @endif
-                                </div>
-<!--                                <img class="genderprofil" src="img/COWOK.png">-->
-                                <div class="row lsright">
-                                    <a href="#" onclick="toggler('selengkapnya')"><img class="lsprofile" src="../img/BAR-8-LS.png"></a>
-                                </div>
-                                <script>
-                                    function toggler(divId){
-                                        $("#" + divId).toggle();
-                                        $('.lsright').hide();
-                                    }
-                                </script>
-                                <div id="selengkapnya">
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Telepon</div>
-                                        <div class="col-md-8">{{$user->telp}}</div>
-                                    </div>
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Website</div>
-                                        <div class="col-md-8"><a href="#">{{$user->website}}</a></div>
-                                    </div>
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Kota</div>
-                                        <div class="col-md-8">{{$user->kota}}</div>
-                                    </div>
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Kode Pos</div>
-                                        <div class="col-md-8">{{$user->kodepos}}</div>
-                                    </div>
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Provinsi</div>
-                                        <div class="col-md-8">{{$user->provinsi}}</div>
-                                    </div>
-                                    <div class="row kontenprofil">
-                                        <div class="col-md-4 labelprofil">Negara</div>
-                                        <div class="col-md-8">{{$user->negara}}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row penghargaandetail">
-                                <div class="col-md-2 picon">
-                                    <img class="penghargaanicon" src="../img/BAR-7-TERBAIK.png">
-                                </div>
-                                <div class="col-md-4 penghargaan">
-                                    <div class="text-center">Penghargaan</div>
-                                    <div class="text-center penghargaannumber">{{$ach}}</div>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+        
+        <div class="container80 whitebackground leftborder kontendekor">
+                <div class="row">
+                    @foreach ($search_result as $product)
+                    <div class="col-sm-4">
+                        <a href="../../showProduct/{{$product->product_id}}"><img class="item-dekor" src="../{{ $product->picture_produk}}"></a>
+                        <div class="judul-dekor">{{ $product->nama_produk }}</div>
+                        <div class="karya-dekor">karya {{ $product->username_pembuat_produk }}</div>
                     </div>
-                    <div class="bariskarya">
-                        <div class="col-md-12">
-                            <img class="bariskaryabar" src="../img/BAR-6-BARISKARYA.png">
-                        </div>
-                        <div class="row itembk">
-                                @foreach($products as $product)
-                                @if($product->penghargaan==0)
-                                <div class="col-md-2">
-                                @else
-                                <div class="col-md-2 terbaikpin">
-                                @endif
-                                <a href="../showProduct/{{$product->id}}"><img class="item-bariskarya" src="../{{ $product->picture}}"></a>
-                                @if($product->penghargaan==0)
-                                @else
-                                <div class="col-md-5 imgpin">
-                                    <img class="pin" src="../img/BAR-7-TERBAIK.png">
-                                </div>
-                                @endif
-                                <div class="judul-dekor">{{ $product->nama }}</div>
-                                <div class="karya-dekor">karya {{ $product->username_pembuat }}</div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
             </div>
-            </div>
-            <footer class="footer-index">
+        </div>
+	</div>
+    <footer class="footer-index">
             <div class="container">
                 <div class="konten">
                     <div class="row">
@@ -249,34 +174,3 @@
         </footer>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-        <title></title>
-</head>
-<body>
-        Nama = {{$user->nama}}<br>
-        Kota = {{$user->kota}}<br>
-        Tanggal lahir = {{$user->tanggal_lahir}}<br>
-        Bio = {{$user->biodata}}<br>
-        Gender = {{$user->gender}}<br>
-        Penghargaan = {{$ach}}<br>
-        <br><br>
-        Baris karya <br>
-        @foreach($products as $product)
-                Nama : {{ $product->nama }}
-        <br><br>
-        Pembuat : {{ $product->username_pembuat }}
-        <br><br>
-        @if($product->penghargaan==0)
-                Tidak ada Penghargaan <br><br>
-        @else
-                Ada penghargaan <br><br>
-        @endif
-        <img src="../../{{ $product->picture}}" height=200 width=200><br><br>
-                <a href="../../showProduct/{{$product->id}}">link</a>
-                <br><br>
-        @endforeach
-</body>
-</html> -->

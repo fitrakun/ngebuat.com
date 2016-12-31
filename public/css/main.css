@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
 	font-family: 'Conv_FF Mark Pro Bold';
 	src: url('fonts/fonts/FF Mark Pro Bold.eot');
 	src: url('fonts/fonts/FF Mark Pro Bold.woff') format('woff'), url('fonts/fonts/FF Mark Pro Bold.ttf') format('truetype'), url('fonts/fonts/FF Mark Pro Bold.svg') format('svg');
@@ -11,11 +11,6 @@
 	src: local('☺'), url('fonts/fonts/FF Mark Pro Regular.woff') format('woff'), url('fonts/fonts/FF Mark Pro Regular.ttf') format('truetype'), url('fonts/fonts/FF Mark Pro Regular.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
-
-.error{
-    font-family: 'Conv_FF Mark Pro Regular';
-    font-size: 0.8em;
 }
 
 body{
@@ -85,6 +80,43 @@ body{
 }
 
 /* index.html */
+
+
+.bold{
+    font-family: 'Conv_FF Mark Pro Bold' !important;
+}
+
+.emailmodal{
+    border-radius: 20px 0px;
+    padding-left: 1em;
+    margin-top: 0.5em;
+    margin-left: 2em;
+    margin-bottom: 0.4em;
+    height: 2.5em !important;
+    border: none;
+    text-align: center;
+}
+
+.btn-masuk-sekarang{
+    width: 15vw;
+    height: 2.5em !important;
+    padding-left: 1em;
+    margin-left: 2em;
+    border-radius: 20px 0px;
+    border:2px solid #FFCB0A;
+    color: #FFCB0A;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.masuk-sekarang{
+    font-family: 'Conv_FF Mark Pro Regular' !important;
+    color: #FFCB0A !important;
+    text-align: right;
+    margin-top: 1.1em;
+    margin-right: 2.9em;
+}
+
+/*carousel*/
 .carousel-caption {
     bottom: 0;
     text-align: left;
@@ -101,15 +133,15 @@ body{
     vertical-align: middle; 
     padding-bottom: 2%;
     padding-top: 2%;
-    border-radius: 30px 0px;
-    background:rgba(0,0,0,0.5);
 }
 
 .backabu{
     position: relative;
-    height: 3.6em;
+    height: 3.5vw;
+    margin-left: -2.2em;
 }
 .itemname{
+    margin-left: -12vw;
     position: absolute;  
     margin-top: 1em;
     font-family: 'Conv_FF Mark Pro Regular';
@@ -117,7 +149,7 @@ body{
 
 .indexbody{
     background: url('../img/Pattern-background-main-with-opacity-30%25.png');
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
@@ -132,63 +164,92 @@ body{
     width: 70%;
 }
 .navigation{
- background: url('../img/BAR-01.png');
-    background-size: cover;
+    background: url('../img/BAR-01.png');
+    background-size: contain;
     background-repeat: no-repeat;
     padding-bottom: 1.6%;
 }
+ul{
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: inline-block;
+    color: #FFCB0A;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.navhidden{
+    display: none;
+}
+ul.topnav li.icon {display: none;}
+
 .searchtutorial{
     margin-top: 10.5%;
-    border-radius: 23px 0px !important;   
+    border-radius: 23px 0px;   
     padding-left: 7%;
     z-index: 100;
     width: 120%;
 }
 
 .emailsignup{
-    margin-top: 2em;
-    width: 13em;
     border-radius: 23px 0px !important;   
 }
 
 .btn-navbar{
+/*
     margin-left: 17%;
 }
-
+*/
+}
 .allcategory{
     margin-top: 20.5%;
     max-width: 125%;
     
 }
-
+.abs{
+    position: absolute;
+}
 .searchbutton{
-    margin-top: 21%;
-    width: 87px;
-    margin-left: 22%;
+    margin-top: 1.7vw;
+    height: 32px;
+    margin-left: 1.5vw;
 }
 
 .bantuanbutton{
-    margin-top: 20.1%;
-    width: 95px;
-    margin-left: -10.5%;
+    width: 39%;
+    margin-top: -2.55vw;
+    margin-left: 6.2vw;
 }
 
 .bagikanbutton{
-    margin-top: 20.5%;
-    width: 99.7%;
-    margin-left: -46%;
+    width: 33%;
+    margin-top: -2.65vw;
+    margin-left: 12.3vw;
 }
 
 .daftarbutton{
-    margin-top: 21%;
-    margin-left: -67%;
-    width: 90%;
+    width: 25%;
+    margin-top: -2.65vw;
+    margin-left: 20vw;
 }
 
 .masukbutton{
-    width: 80%;
-    margin-left: -96%;
-    margin-top: 21%;
+    width: 20.5%;
+    margin-left: 26.9vw;
+    margin-top: -2.8vw;
 }
 
 .nopadding {
@@ -206,14 +267,11 @@ hr{
 .terbaik{
     margin-top: -0.2em !important;
 }
-.carousel-inner > .item > img{
-    width:905px !important;
-    height:280px !important;
+.carousel-inner > .item > a > img{
+    height: 380px;
     border-radius: 60px 0px 60px 0px; 
 }
 .carousel{
-    width:905px;
-    height:280px;
     border-radius: 60px 0px 60px 0px;
 }
 
@@ -237,7 +295,7 @@ hr{
 }
 .gambar-terbaik{
     border-radius: 23px 0px; 
-    width: 20em;
+    height: 17vw;
 }
 
 .row1{
@@ -283,8 +341,8 @@ hr{
 }
 
 .emailsignupbutton{
-    margin-left: -1.55em;
-    margin-top: 1.63em;
+    margin-left: -2.9vw;
+    margin-top: 0;
     height: 2.23em;
 }
 
@@ -312,6 +370,10 @@ hr{
     padding-right: 2.7em;
 }
 
+.qrcodeline{
+    width: 100%;
+}
+
 /*daftar.html*/
 .containerdaftar{
     margin-top: 3em;
@@ -319,66 +381,52 @@ hr{
     background: none;
 }
 .signupform{
-    width: 65%;
-    position: absolute;
+    width: 100%;
+    position: relative;
     z-index: 0;
 }
 
-.inputsignup{
-    padding-top: 13em;
-}
-
 .fbbutton{
-    margin-top: 7em;
-    margin-left: 5em;
-    position: relative;
-    max-width: 13%;
-    z-index: 1;
+    width: 100%;
 }
 
 .twitterbutton{
-    margin-top: 7em;
-    margin-left: 1em;
-    position: relative;
-    max-width: 13%;
-    z-index: 1;
+    width: 100%;
 }
 
 .inputsignup{
-    margin-top:5.6em;
-    margin-left: 4.1em;
+    margin-top: 11vw;
+    margin-left: 5.5vw;
 }
 .signupinput{
+    margin-top: 0.8vw;
+    margin-bottom: 0.8vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    width: 90%;
     padding-left: 1em;
-    margin-bottom: 1em;
-    height: 2em !important;
+    margin-bottom: 10px;
     border-radius: 12px 0px;   
-    width: 19em;
     background-color: #FFECA7 !important;
     border: none;
 }
 .submitpicture1{
-   /* margin-top: 2.5em;*/
-    width: 19em;
+    margin-top: 0.8vw;
+    width: 90%;
     background: none !important;
     border: none !important;
 }
 .masuk{
-    position: relative;
-    font-family: 'Conv_FF Mark Pro Regular';
-    /*color: black;*/
-    margin-top: 18em;
-    margin-left: 5.5em;
-    margin-bottom: 4.5em;
+    margin-left: 4.5vw;
+    margin-top: 33vw;
 }
 
-.masukcolor{
+.kuning{
     color: #FFCB0A !important;
 }
 
 a{
     color: black;
-    text-decoration: none;
 }
 
 
@@ -407,31 +455,31 @@ a:active {
     color: black;
 }
 .masuk > a:link{
-    color: #FFECA7 !important;
+    color: #FFECA7;
 }
 
 /*dekorasi.html*/
 .dekorasibody{
-    background: url('../img/background_dekorasi.png');
-    background-size: auto;
+    background: url('../img/Pattern-Dekorasi.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .teknologibody{
-    background: url('../img/background_teknologi.png');
-    background-size: auto;
+    background: url('../img/Pattern-Teknologi.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .masakanbody{
-    background: url('../img/background_masakan.png');
-    background-size: auto;
+    background: url('../img/Pattern-Masakan.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .kerajinanbody{
-    background: url('../img/background_kerajinan.png');
-    background-size: auto;
+    background: url('../img/Pattern-Kerajinan.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -443,6 +491,13 @@ a:active {
 .background-headerdekorasi{
     position: relative;
     width: 100%;
+}
+
+.searchheader{
+    position: absolute;
+    margin-left: 29vw;
+    margin-top: -2em;
+    font-size: 2.5em;
 }
 
 .text-headerdekorasi{
@@ -497,7 +552,15 @@ a:active {
 }
 
 .profile{
+    display: inline-block;
     padding-top: 1em;
+    margin-top: -4vw;
+    margin-left: 25vw;
+    height: 11vw;
+}
+
+.profile-thumbnail{
+display: inline-block; 
 }
 
 .caret{
@@ -568,6 +631,7 @@ input[type="text"]:read-only {
     height: 100%;
 }
 .formaddproduct{
+    padding-top: 2vw;
     border-radius: 50px 0px;
     border: 1px solid #FFCB0A;
 }
@@ -759,4 +823,430 @@ input[type=radio]:checked + label {
 #dynamicInput3{
     margin-left: 1em;
     margin-right: 1em;
+}
+
+/*myprofile.html*/
+.profilebody{
+    background: url('../img/Pattern-Full-1.png') no-repeat;
+    background-size: cover;
+    
+}
+
+.namaprofile{
+    margin-top: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.username{
+    background: url('../img/BAR-1.png') no-repeat;
+    background-size: contain;
+    font-size: 2.5em;
+    padding-top: 0.385em;
+    padding-bottom: 0.4em;
+    padding-left: 1.2em;
+    
+}
+
+.profiledetails{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.fotoprofile{
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.detailprofil{
+    padding-right: 3em;
+    margin-top: 1em;
+    border-radius: 30px 0px;
+    border: 1px solid #FFCB0A;
+    font-family: 'Conv_FF Mark Pro Regular';
+    padding-left: 1em;
+    padding-top: 1.5em;
+}
+.labelprofil{
+    font-family: 'Conv_FF Mark Pro Bold';
+}
+.kontenprofil{
+    margin-bottom:1em; 
+}
+.genderprofil{
+    margin-left: 1em;
+    width: 1.5em;
+}
+.lsprofile{   
+    width: 13em;
+}
+.lsright{
+    text-align: right;
+    margin-right: -3.1em;
+}
+.picon{
+    padding-right: 0px;
+}
+.penghargaanicon{
+    width: 100%;
+}
+.penghargaandetail{
+    margin-top: 1em;
+}
+.penghargaan{
+    font-family: 'Conv_FF Mark Pro Regular';
+    font-size: 1.2em;
+    padding-left: 0px;
+}
+.penghargaannumber{
+    font-family: 'Conv_FF Mark Pro Bold';
+}
+#selengkapnya{
+    display: none;
+    margin-top: 1em;
+}
+.biotext{
+     font-family: 'Conv_FF Mark Pro Regular';
+    font-size: 0.9em;
+}
+.reset{
+    font-family: 'Conv_FF Mark Pro Regular';
+}
+.resetbtn{
+    border: 0;
+    border-radius: 0;
+    background: none;
+}
+.bariskarya{
+    margin-bottom: 5em;
+}
+.bariskaryabar{
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.item-bariskarya{
+    border-radius: 20px 0px;
+    width: 100%;
+}
+
+.terbaikpin, .fotonama{
+    position: relative;
+}
+.imgpin{
+    position: absolute; 
+    z-index: 1; 
+    top: 0; 
+    right: 0;
+}
+.pin{
+    width: 100%;
+}
+
+/*tentangkami.html*/
+.kontententangkami{
+    margin-top: 3em;
+    border: 1px solid #FFCB0A;
+    border-radius: 100px 100px 0px 0px;
+    font-family: 'Conv_FF Mark Pro Regular';
+}
+
+.ceritakamimg{
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.fotoceritakami{
+    width: 100%;
+    border-radius: 50px 0px 50px 0px;
+}
+.mtop1koma5em{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+.fotoorang{
+    width: 100%;
+    border-radius: 50px 0px 50px 0px;
+}
+.imgnama{
+    position: absolute; 
+    z-index: 1; 
+    bottom: 0; 
+    left: 0;
+}
+.barnama{
+    width: 100%;
+    position: relative;
+}
+.namakami{
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    left: 25%;
+}
+.fotonama{
+    margin-top: 1.5em;
+}
+
+/*artikel.html*/
+.borderkiriall{
+    margin-top: 3em;
+    border-left: 1px solid #FFCB0A;
+    border-radius: 50px 0px 0px 0px;
+    padding: 0px;
+    font-family: 'Conv_FF Mark Pro Regular';
+}
+.headerproduk{
+    width: 90%;
+    position:relative;
+}
+.judulkarya1{
+    position:absolute;
+    top: 0;
+    left: 2em;
+    z-index: 1;
+    width: 90%;
+}
+.karya{
+    top: 2.8em;
+    padding-left: 0px;
+    margin-left: -1em;
+}
+.opsidisukai{
+    width: 100%;
+    margin-left: -0.4em;
+}
+.tambahkoleksi{
+    width: 90%;
+    margin-left: -2.5em;
+}
+.bagikankarya{
+    width:83%;   
+    margin-left: -5.8em;
+}
+.terbaikpinkarya{
+    top: -3.5em;
+}
+
+/*artikelsudahlogin.html*/
+.editproduk{
+    width: 150%;
+    margin-left: -6.9em;
+}
+.opsidisukaisl{
+    width: 100%;
+    margin-left: -4.5em;
+}
+.tambahkoleksisl{
+    width: 90%;
+    margin-left: -6.5em;
+}
+.bagikankaryasl{
+    width:83%;   
+    margin-top: -5.2em;
+    margin-left: 5.3em;
+}
+.detilkarya{
+    border-right: 1px solid #FFCB0A;
+}
+.fotokarya{
+    width: 100%;
+    border-radius: 50px 0px;
+    position: relative;
+}
+.backk{
+    width: 25%;
+    position: absolute;
+    top: 2px;
+    right: 16px;
+}
+.kontenkk{
+    color:white;
+    position: absolute;
+    top: 1em;
+    right: 2.5em;
+}
+.stikerverifikasi{
+    position: absolute;
+    width: 13%;
+    top: 2px;
+    left: 16px;
+}
+.gambarkarya{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+.tk{
+    margin-bottom: 1em;
+}
+.bintangkarya{
+    width: 70%;
+}
+.tktext{
+    padding-right: 0px;
+}
+.adeskripsikarya{
+    font-size: 0.85em;
+}
+.akontenalat{
+    margin-left: -2em;
+    font-size: 0.85em;
+}
+.aboutkreator{
+    border-radius: 30px 0px;
+    border: 1px solid #FFCB0A;
+}
+.seputarkreator{
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    text-align: center;
+    background: #FFCB0A;
+    border-radius: 50px 0px 0px 0px;
+}
+.icondilihat{
+    width: 100%;
+}
+.dilihat{
+    padding-top: 0.8em;
+}
+.fotokreator{
+    margin-top: 1.5em;
+    width: 20%;
+    border-radius: 20px 0px 0px 0px;
+}
+.namakreator{
+    margin-top: -0.8em;
+}
+.hrak{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.fotokaryalainnya{
+    width: 100%;
+    border-radius: 20px 0px;
+}
+.paddingstgh{
+    padding: 0.2em;
+}
+.fotokl{
+    margin-bottom: 1.5em;
+}
+.langkah{
+    border-radius: 30px 0px 0px 0px;
+    border: 1px solid #FFCB0A;
+    margin-left: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 95%;
+}
+.gambarlangkah1, .gambarlangkah3{
+    border-radius: 30px 0px 0px 0px;
+    width: 100%;
+}
+.lg{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 0px 0px 0px 30px;
+    border: 1px solid #FFCB0A;
+    text-align: center;
+    margin-right: -3px;
+}
+.relative{
+    position: relative;
+}
+.captionlangkah{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.textcaptionlangkah{
+    position: absolute;
+    bottom: 0.5em;
+    left: 0.8em;
+}
+.captionimglangkah{
+    position: absolute;
+    bottom: -0.2em;
+    left: -1.8em;
+    width: 100%;
+}
+.textcaptionlangkah2{
+    color: white;
+    position: absolute;
+    bottom: 0.5em;
+    left: 0.8em;    
+}
+.modal-content{
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+}
+.modal-footer{
+    border: none;
+    margin-top: -1em;
+    padding: 0px;
+    text-align: left;
+}
+#prev-btn, #next-btn{
+    width: 3em;
+    border: none;
+    background:none;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+    color: white;
+    font-size: 36pt;
+    padding: 0px;
+}
+#next-btn{
+/*    margin-top: -4.1em;*/
+    float: right !important;
+}
+.blabel{
+    position: relative;
+    width: 100%;
+}
+.tlabel{
+    position: absolute;
+    bottom: 1.2em;
+    left: 1.5em;
+    color: black;
+    font-size: 1.3em;
+}
+.bataskekomen{
+    margin-top: -1em;
+}
+.formkomentar{
+    background: url('../img/Form%20komentar.png') no-repeat;
+    background-size: 100% 100%;
+    padding-top: 2em;
+}
+.fpkomentar{
+    width: 100%;
+}
+#textkomentar{
+    resize: none;
+    font-family: 'Conv_FF Mark Pro Regular';
+    padding-left: 1em;
+    border-radius: 0px 0px 50px 0px; 
+    border: none;
+    position: relative;
+}
+.pilihgambar{
+    width: 3vw;
+}
+.btn-file2{
+    margin-top: -1.8em;
+    overflow: hidden;
+    position: relative;
+}
+.kirim{
+    height: 2.4vw;
+    margin-left: -1.4vw;
+    display: inline-block;
+}
+.maskot-oke{
+    width: 100%;
 }

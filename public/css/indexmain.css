@@ -1,0 +1,38 @@
+.background-modal{
+    height: 30em;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.modal-dialog{
+    margin-top: 7.2em;
+    height: 30em;
+    width: 22em;
+}
+
+.modal-header{
+    border: 0px;
+    padding: 4px;
+}
+
+.close{
+    font-family: 'Conv_FF Mark Pro Regular';
+    padding-left: 1em;
+    font-size: 2.3em;
+}
+
+.modal-header .close{
+    margin-top: 0px;
+}
+
+.modal-content{
+    margin-left: 1em;
+    width: 21em;
+    font-family: 'Conv_FF Mark Pro Regular';
+    background: none;
+    margin-top: 11.5em;
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+}

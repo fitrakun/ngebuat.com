@@ -93,10 +93,12 @@ class ProductController extends Controller
 			$j=1;
 			while($j<=10){
 				$temp3 = "step" . $i . "-" . $j;
+				$temp4 = "judulstep" . $i . "-" . $j;
 				$file = $request->file($temp3);
 				if($file != null){
 					$this->validate($request, [
-			    		$temp3 => 'image'
+			    		$temp3 => 'image',
+			    		$temp4 => 'regex:/^[a-z\d\-_\s]+$/i|max:100|required'
 					]);
 				}
 				else{
@@ -175,11 +177,13 @@ class ProductController extends Controller
 			while($j<=10){
 				$stepPic = new StepPicture();
 				$temp = "step" . $i . "-" . $j;
+				$temp2 = "judulstep" . $i . "-" . $j;
 				$file = $request->file($temp);
 				$filename = $product->id . '-' . $i . '-' . $j . ".jpg";
 				if($file != null){
 					$file->move('img//product', $filename);
 					$stepPic->step_id = $langkah->id;
+					$stepPic->judul = $request[$temp2];
 					$stepPic->picture = "img//product//" . $filename;
 					$stepPic->order = $j;
 					$stepPic->save();
@@ -191,6 +195,20 @@ class ProductController extends Controller
 			}
 		}
     	return redirect('/dashboard');
+    }
+
+    public function viewEditProduct($id, Request $request){
+    	if(Auth::check()){
+			$data = [];
+			$data['product'] = Product::where('id', $id)->first();
+			$data['tools'] = Tool::where('product_id', $id)->get();
+			$data['materials'] = Material::where('product_id', $id)->get();
+			return View('editprofile', $data);
+    	}
+    	else{
+    		$request->session()->put('msg', 'Harap signin terlebih dahulu');
+    		return redirect('/login');
+    	}
     }
 
     public function showProduct($id, Request $request){
@@ -288,44 +306,45 @@ class ProductController extends Controller
 				$search_result = $result;
 	    		
 	    	}
-		}
-		else{
-			if($search==NULL){
-    			$search_result	= DB::table('products')
-		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
-		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
-		                		->where('kategori', $kategori)
-		               			->distinct()
-		               			->get();
+	}
+	else{
+		if($search==NULL){
+		$search_result	= DB::table('products')
+	                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+	                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+	                		->where('kategori', $kategori)
+	               			->distinct()
+	               			->get();
 	    	}
 	    	else{
 	    		$result = collect();
 	    		$arr = $this->splitLabel($search);
-				for($j=0; $j<count($arr); $j++){
-					$search_result	= DB::table('products')
-			                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
-			                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
-			                		->where('nama', 'LIKE', '%'.$arr[$j].'%')
-			                		->where('kategori', $kategori)
-			               			->distinct()
-			               			->get();
-			        $search_result2	= DB::table('labels')
-					        		->select('product_id', 'nama_produk', 'picture_produk',
-					        			'username_pembuat_produk', 'penghargaan_produk')
-					        		->where('nama', 'LIKE', '%'.$arr[$j].'%')
-					        		->where('kategori_produk', $kategori)
-					       			->distinct()
-					       			->get();
-					$search_result = $search_result->merge($search_result2)->unique();
-					$result = $result->merge($search_result)->unique();
-				}
-				$search_result = $result;
+			for($j=0; $j<count($arr); $j++){
+				$search_result	= DB::table('products')
+		                		->select('id as product_id', 'nama as nama_produk', 'picture as picture_produk',
+		                			'username_pembuat as username_pembuat_produk', 'penghargaan as penghargaan_produk')
+		                		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+		                		->where('kategori', $kategori)
+		               			->distinct()
+		               			->get();
+		        $search_result2	= DB::table('labels')
+				        		->select('product_id', 'nama_produk', 'picture_produk',
+				        			'username_pembuat_produk', 'penghargaan_produk')
+				        		->where('nama', 'LIKE', '%'.$arr[$j].'%')
+				        		->where('kategori_produk', $kategori)
+				       			->distinct()
+				       			->get();
+				$search_result = $search_result->merge($search_result2)->unique();
+				$result = $result->merge($search_result)->unique();
 			}
-	    }
+			$search_result = $result;
+		}
+	}
     	return $search_result;
     }
 
     public function home($kategori = NULL, $search = NULL){
+    	$search = NULL;
     	$search_result = $this->searchProduct($kategori, $search);
 	    $product_new		= DB::table('products')
 	                		->orderBy('id', 'desc')
@@ -350,7 +369,21 @@ class ProductController extends Controller
     	if($kategori=="semua produk"){
     		$kategori = "all";
     	}
-    	return redirect('/home/'.$kategori.'/'.$nama);
+    	else if($kategori==NULL){
+    		$kategori = "all";
+    	}
+    	return redirect('/search/'.$kategori.'/'.$nama);
+    }
+    
+    public function filterCategory($kategori){
+	$search = NULL;
+    	$search_result = $this->searchProduct($kategori, $search);
+    	return View('filterCategory')->with(array('search_query' => $kategori,'search_result' => $search_result));
+    }
+    
+    public function viewSearchResult($kategori = NULL, $search = NULL){
+    	$search_result = $this->searchProduct($kategori, $search);
+    	return View('searchResult')->with(array('search_query' => $search, 'search_result' => $search_result));
     }
 
     public function like(Request $request){
@@ -450,5 +483,4 @@ class ProductController extends Controller
     	$str = str_replace("before","yang lalu",$str);
     	return $str;
     }
-
 }

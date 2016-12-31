@@ -60,6 +60,7 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@like',
 		'as' => 'like'
 	]);
+        
 
 	Route::get('/babix/{id}/{test}', function(){
 		return view('message');
@@ -100,11 +101,15 @@ Route::group(['middleware' => 'web'],  function(){
 	Route::get('/showProduct/{id}', [
 		'uses' => 'ProductController@showProduct',
 	]);
-
+   
 	Route::get('/home/{kategori?}/{search?}', [
 		'uses' => 'ProductController@home',
 	]);
 
+	Route::get('/search/{kategori?}/{search?}', [
+		'uses' => 'ProductController@viewSearchResult',
+	]);
+	
 	Route::post('/search', [
 		'uses' => 'ProductController@search',
 		'as' => 'search'
@@ -114,4 +119,33 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@addComment',
 		'as' => 'addComment'
 	]);
+
+	Route::post('/subscribe', [
+		'uses' => 'UserController@subscribe',
+		'as' => 'subs'
+	]);
+
+	Route::get('/subscribe', [
+		'uses' => 'UserController@viewSubscribe',
+	]);
+
+        Route::get('/aboutus', function(){
+		return view('aboutus');
+	});
+
+        Route::get('/terms', function(){
+		return view('termandcon');
+	});
+
+        Route::get('/privacy', function(){
+		return view('privacy');
+	});
+	
+	Route::get('/category/{kategori}', [
+		'uses' => 'ProductController@filterCategory',
+	]);
+ 
+        Route::get('/help', function(){
+		return view('help');
+	});
 });
