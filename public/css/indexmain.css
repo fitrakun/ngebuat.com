@@ -6,7 +6,7 @@
 }
 
 .modal-dialog{
-    margin-top: 7.2em;
+    margin-top: 7vw;
     height: 30em;
     width: 22em;
 }
@@ -23,15 +23,15 @@
 }
 
 .modal-header .close{
-    margin-top: 0px;
+    margin-top: -2.5vw;
 }
 
 .modal-content{
-    margin-left: 1em;
+    margin-left: 3vw;
     width: 21em;
     font-family: 'Conv_FF Mark Pro Regular';
     background: none;
-    margin-top: 11.5em;
+    margin-top: 19vw;
     border: none;
     border-radius: 0px;
     box-shadow: 0 0px 0px rgba(0,0,0,0);

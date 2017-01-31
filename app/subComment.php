@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class subComment extends Model
+class SubComment extends Model
 {
     //
     public $timestamps = false;

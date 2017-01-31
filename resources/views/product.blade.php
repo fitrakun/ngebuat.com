@@ -138,6 +138,7 @@
         ?>
         @foreach ($arr as $pict)
             @if($pict!=null)
+            	Judul : {{$pict->judul}}<br>
                 Gambar : <img src="../{{ $pict->picture}}" height=200 width=200>
                 <br><br>
             @endif
@@ -148,16 +149,54 @@
     <br><br>
     <b>KOMENTAR</b> <br><br>
     @foreach ($comments as $comment)
-        {{$comment->username}} <br>
-        <?php
-            $subDate = $productCtrl->substractDate($comment->created_at);
-        ?>
-        {{ $subDate }}<br><br>
-        {{$comment->body}} <br>
-        @if($comment->picture!=NULL)
-            <img src="../{{ $comment->picture}}" height=200 width=200>
-        @endif
-        <br>
+        <div id="komenby{{$comment->username}}">
+            ProfPic user : <br><br>
+            <img src="../{{ $comment->picture_user}}" height=200 width=200><br>
+            {{$comment->username}} <br>
+            <?php
+                $subDate = $productCtrl->substractDate($comment->created_at);
+            ?>
+            {{ $subDate }}<br><br>
+            {{$comment->body}} <br>
+            @if($comment->picture!=NULL)
+                <img src="../{{ $comment->picture}}" height=200 width=200><br>
+            @endif
+
+            <!-- Bagian subkomen -->
+            <b>Subkomen :</b><br><br>
+            <?php
+                $arr = $productCtrl->getSubComment($comment->id);
+            ?>
+            @foreach ($arr as $subC)
+                ProfPic user : <br><br>
+                <img src="../{{ $subC->picture_user}}" height=200 width=200>
+               {{$subC->username}} <br>
+                <?php
+                    $subDate = $productCtrl->substractDate($subC->created_at);
+                ?>
+                {{ $subDate }}<br><br>
+                {{$subC->body}} <br>
+            @endforeach
+            <br>
+            
+            <!-- Form buat nambah subcomment -->
+            <form action="{{ route('addSubComment') }}" method="POST">
+                <input size=100 type="text" name="BodySCmt"><br><br>
+                <input type="hidden" name="cId" value="{{$comment->id}}">
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+                <input type="submit">
+            </form>
+        </div>
+        <input type="button" value="Balas" onclick="addInput('komenby{{$comment->username}}');">
+        <script>
+        function addInput(divName){
+    var newdiv = document.createElement('div');
+    newdiv.className= 'row';
+    newdiv.innerHTML = "<input size=100 type='text' name='subComment'> <input type='submit'>";
+    document.getElementById(divName).appendChild(newdiv);
+}
+</script>
+
         -----------------------------------
         <br><br>
     @endforeach

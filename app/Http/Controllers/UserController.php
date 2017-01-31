@@ -10,6 +10,7 @@ use App\Product;
 use Mail;
 use Carbon\Carbon;
 use \Hash;
+use Intervention\Image\ImageManagerStatic as image;
 
 class UserController extends Controller
 {
@@ -123,9 +124,9 @@ class UserController extends Controller
 			$data['picture'] = $user->picture;
 			if($user->tanggal_lahir!=''){
 				$birthdate = explode("-", $user->tanggal_lahir);
-				$data['date'] = $birthdate[0];
+				$data['date'] = $birthdate[2];
 				$data['month'] = $birthdate[1];
-				$data['year'] = $birthdate[2];
+				$data['year'] = $birthdate[0];
 			}
 			else{
 				$data['date'] = '';
@@ -222,7 +223,7 @@ class UserController extends Controller
 			}
 			else{
 				$user->isValid = 1;
-				$user->created_at = Carbon::now('Asia/Jakarta')->format('d-m-y-H:i:s');
+				$user->created_at = Carbon::now('Asia/Jakarta')->format('Y-m-d H:i:s');
 				$user->save();
 				if(Auth::attempt(['username' => $user->username, 'password' => $user->password_no_encrypt, 'isValid' => 1])){
 					return redirect('dashboard');
@@ -230,6 +231,25 @@ class UserController extends Controller
 			}
 		}
 	}
+
+	public function banUser($username){
+        if(Auth::check()){
+            if(Auth::user()->isAdmin==1){
+                $user = User::where('username', $username)->first();
+                $user->isValid = 0;
+                $user->confirmation_token = "banned";
+                $user->save();
+                return redirect('/admin4');
+            }
+            else{
+                return redirect('/home');
+            }
+        }
+        else{
+            $request->session()->put('msg', 'Harap signin terlebih dahulu');
+            return redirect('/login');
+        }
+    }
 	
 	public function editProfile(Request $request){
 		$request['Birthdate'] = $request['Date'] . '-' . $request['Month'] . '-' . $request['Year'];
@@ -271,10 +291,13 @@ class UserController extends Controller
 		$file = $request->file('ProfPic');
 		$filename = $user->username . ".jpg";
 		if($file != null){
-			$file->move('img//users', $filename);
+			$path = 'img//users//' . $filename;
+            		Image::make($file)->resize(200, 200)->save($path, 60);
+
 			$user->picture = "img//users//" . $filename;
 		}
-		$user->tanggal_lahir = $request['Birthdate'];
+		$temp = $request['Year'] . '-' . $request['Month'] . '-' . $request['Date'];
+		$user->tanggal_lahir = $temp;
 		
 		$user->save();
 

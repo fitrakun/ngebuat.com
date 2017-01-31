@@ -15,7 +15,9 @@
 	<div class="container-fluid indexbody">
             @if(Auth::check())
 <nav class="navigation row">
-                    <div class="col-md-2 col-xs-2 space"></div>
+                    <div class="navbar-header">
+                          <a class="navbar-brand" href="http://ngebuat.com/daeun/home"><img class="logo" src="img/LOGO-01.png"></a>
+                   </div>
                     <div class="col-md-2 col-xs-3 nopadding">
                         <form action="{{ route('search') }}" method="POST" enctype="multipart/form-data">
                         	<input type="text" name="Name" class="form-control input-sm searchtutorial" placeholder="Ayo cari tutorialnya" />{{ $errors->first('Name') }}<input type="hidden" name="_token" value="{{ Session::token() }}">
@@ -24,7 +26,7 @@
                     <li class="col-md-2 col-xs-5 nopadding"><div class="nopadding"><a href="#"><img class="img-responsive searchbutton btn-navbar" src="{{asset('img/BAR-04.png')}}"></a></div></li>
 						</form>
                     <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><input type="image" alt="Submit" name="submit" border="0" class="img-responsive bantuanbutton btn-navbar" src="{{asset('img/BAR-05.png')}}"><p class="navhidden">Bantuan</p></a></div></li>
-                    <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
+                    <li class="col-xs-12"><div class="backblack nopadding fb-share-button" data-href="https://www.ngebuat.com/" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngebuat.com&amp;src=sdkpreparse"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
                     <div class="col-md-4 profile">
                         <div class="dropdown">
                             <button class="btn dropdown-toggle col-md-12 buttonprofile" type="button" id="menu1" data-toggle="dropdown">
@@ -63,7 +65,9 @@
             </nav>
             @else
             <nav class="navigation row">
-                    <div class="col-md-2 col-xs-2 space"></div>
+                    <div class="navbar-header">
+                          <a class="navbar-brand" href="http://ngebuat.com/daeun/home"><img class="logo" src="img/LOGO-01.png"></a>
+                   </div>
                     <div class="col-md-2 col-xs-3 nopadding">
                         <form action="{{ route('search') }}" method="POST" enctype="multipart/form-data">
                         	<input type="text" name="Name" class="form-control input-sm searchtutorial" placeholder="Ayo cari tutorialnya" />{{ $errors->first('Name') }}<input type="hidden" name="_token" value="{{ Session::token() }}">
@@ -72,7 +76,7 @@
                     <li class="col-md-2 col-xs-5 nopadding"><div class="nopadding"><a href="#"><img class="img-responsive searchbutton btn-navbar" src="{{asset('img/BAR-04.png')}}"></a></div></li>
 						</form>
                     <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><input type="image" alt="Submit" name="submit" border="0" class="img-responsive bantuanbutton btn-navbar" src="{{asset('img/BAR-05.png')}}"><p class="navhidden">Bantuan</p></a></div></li>
-                    <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
+                    <li class="col-xs-12"><div class="backblack nopadding fb-share-button" data-href="https://www.ngebuat.com/" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngebuat.com&amp;src=sdkpreparse"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
                     <li  class="col-xs-12"><div class="backblack nopadding"><a href="signup"><img class="img-responsive daftarbutton btn-navbar" src="{{asset('img/BAR-07.png')}}"><p class="navhidden">Daftar</p></a></div></li>
                     <li  class="col-xs-12"><div class="backblack nopadding"><a href="login"><img class="img-responsive masukbutton btn-navbar" src="{{asset('img/BAR-08.png')}}"><p class="navhidden">Masuk</p></a></div></li>
                      <li class="icon col-xs-1 ">
@@ -119,19 +123,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-2">
-                            <img class="qrcodeline" src="{{asset('img/qrcodeline.jpg')}}">
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <h4>Tentang Kami</h4>
                             <div class="fontfooter">
                                 <a href="aboutus" class="afooter">Siapa kami ?</a>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <h4>Temukan Kami</h4>
                             <div class="fontfooter">
-                                <br> <br>
+                                <a href="http://line.me/ti/p/~@ysu1395x" class="afooter">Line &emsp;&emsp;&emsp;&emsp;&gt;</a>
+                                <br>
                                 <a href="https://www.facebook.com/ngebuatcom-537569316421740/?fref=ts" class="afooter">Facebook &emsp;&ensp;&gt;</a>
                                 <br>
                                 <a href="https://www.instagram.com/ngebuat/" class="afooter">Instagram &emsp;&gt;</a>

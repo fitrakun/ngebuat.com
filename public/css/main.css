@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
 	font-family: 'Conv_FF Mark Pro Bold';
 	src: url('fonts/fonts/FF Mark Pro Bold.eot');
 	src: url('fonts/fonts/FF Mark Pro Bold.woff') format('woff'), url('fonts/fonts/FF Mark Pro Bold.ttf') format('truetype'), url('fonts/fonts/FF Mark Pro Bold.svg') format('svg');
@@ -38,7 +38,6 @@ body{
     width: 100%;
 }
 .counter-image{
-    
     position:absolute !important;
     z-index: -1;
     left: 50%;
@@ -80,8 +79,12 @@ body{
 }
 
 /* index.html */
-
-
+.logo{
+    width: 10vw;
+    margin-left: 17vw;
+    margin-top: -0.4vw;
+    margin-right: 1vw;
+}
 .bold{
     font-family: 'Conv_FF Mark Pro Bold' !important;
 }
@@ -110,7 +113,7 @@ body{
 
 .masuk-sekarang{
     font-family: 'Conv_FF Mark Pro Regular' !important;
-    color: #FFCB0A !important;
+    /*color: #FFCB0A !important;*/
     text-align: right;
     margin-top: 1.1em;
     margin-right: 2.9em;
@@ -148,8 +151,14 @@ body{
 }
 
 .indexbody{
-    background: url('../img/Pattern-background-main-with-opacity-30%25.png');
-    background-size: 100% 100%;
+    background: url('../img/BARU.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.termsbody{
+    background: url('../img/BARU.png');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -164,7 +173,7 @@ body{
     width: 70%;
 }
 .navigation{
-    background: url('../img/BAR-01.png');
+    background: url('../img/Top-Bar.png');
     background-size: contain;
     background-repeat: no-repeat;
     padding-bottom: 1.6%;
@@ -214,6 +223,15 @@ ul.topnav li.icon {display: none;}
 }
 */
 }
+
+.categorytext{
+    color: #5D5D5D;
+}
+
+.categorytext:hover, .categorytext:active{
+    color: black;
+}
+
 .allcategory{
     margin-top: 20.5%;
     max-width: 125%;
@@ -260,6 +278,12 @@ ul.topnav li.icon {display: none;}
 .space{
     padding-right: 30%;
 }
+
+.carouselhr{
+    margin-top: 36.5vw !important;
+    border: 1px solid #FFCB0A;
+}
+
 hr{
     margin-top: 2em;
     border: 1px solid #FFCB0A;
@@ -281,6 +305,7 @@ hr{
 
 .item-terbaik, .terbaru{
     margin-left: 1.5%; 
+    margin-top: 2vw;
 }
 
 .icon-terbaik{
@@ -308,12 +333,26 @@ hr{
 
 .see-all-terbaik, .see-all-terbaru{
     text-align: right;
-    margin-top: 2em;
+    margin-top: 0px;
 }
 
 .background-see-all-terbaik, .background-see-all-terbaru{
     width: 20em;
     position: relative;
+}
+
+.ayodaftarkan{
+    margin-top: 1vw; 
+}
+
+.kataayo{
+    margin-top: 1.5vw;
+}
+
+.kataayo2{
+    margin-top: 1.5vw;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .text-see-all-terbaik, .text-see-all-terbaru{
@@ -458,6 +497,70 @@ a:active {
     color: #FFECA7;
 }
 
+.dekorasiimg{
+    background: url('../img/ICON%20Kategori-01.png');
+    background-size: 100% 100%;v
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.dekorasiimg:hover, .dekorasiimg:active {
+    background: url('../img/ICON%20Kategori%20click-01.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.teknologiimg{
+    background: url('../img/ICON%20Kategori-03.png');
+    background-size: 100% 100%;v
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.teknologiimg:hover, .teknologiimg:active {
+    background: url('../img/ICON%20Kategori%20click-03.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.masakanimg{
+    background: url('../img/ICON%20Kategori-02.png');
+    background-size: 100% 100%;v
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.masakanimg:hover, .masakanimg:active {
+    background: url('../img/ICON%20Kategori%20click-02.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.kerajinanimg{
+    background: url('../img/ICON%20Kategori-04.png');
+    background-size: 100% 100%;v
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
+.kerajinanimg:hover, .kerajinanimg:active {
+    background: url('../img/ICON%20Kategori%20click-04.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 32%;
+}
+
 /*dekorasi.html*/
 .dekorasibody{
     background: url('../img/Pattern-Dekorasi.jpg');
@@ -496,7 +599,7 @@ a:active {
 .searchheader{
     position: absolute;
     margin-left: 29vw;
-    margin-top: -2em;
+    margin-top: -5.5vw;
     font-size: 2.5em;
 }
 
@@ -529,11 +632,15 @@ a:active {
 }
 .item-dekor{
     border-radius: 23px 0px;
-    width: 20em;
+    width: 100%;
 }
 .kontendekor{
     padding-top: 3em;
     padding-bottom: 3em;
+}
+
+.resultpadding{
+   margin-bottom: 3vw;
 }
 
 /* indexsudahlogin.html*/
@@ -738,12 +845,10 @@ div .stars span {
 }   
 
 .harga1{
-    width: 10em;
     padding-right: 0px !important;
 }
 
 .harga2{
-    width:13.4em;
 }
 
 #penjelasankarya, #penjelasanlangkah{
@@ -757,7 +862,7 @@ div .stars span {
 }
 
 .tambahbahan{
-    background: url('../img/bahan.png') no-repeat;
+    background: url('../img/Bahan.png') no-repeat;
     background-size: contain;
     border: none;
 }

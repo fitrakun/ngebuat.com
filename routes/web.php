@@ -12,7 +12,7 @@
 */
 Route::group(['middleware' => 'web'],  function(){
 	Route::get('/', function () {
-		return view('welcome');
+		return redirect('/home');
 	});
 
 	Route::get('/signup', [
@@ -61,11 +61,6 @@ Route::group(['middleware' => 'web'],  function(){
 		'as' => 'like'
 	]);
         
-
-	Route::get('/babix/{id}/{test}', function(){
-		return view('message');
-	});
-
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
 	]);
@@ -119,10 +114,19 @@ Route::group(['middleware' => 'web'],  function(){
 		'uses' => 'ProductController@addComment',
 		'as' => 'addComment'
 	]);
+	
+	Route::post('/addSubComment', [
+		'uses' => 'ProductController@addSubComment',
+		'as' => 'addSubComment'
+	]);
 
 	Route::post('/subscribe', [
 		'uses' => 'UserController@subscribe',
 		'as' => 'subs'
+	]);
+
+	Route::get('/subscribe', [
+		'uses' => 'UserController@viewSubscribe',
 	]);
 
         Route::get('/aboutus', function(){
@@ -144,4 +148,71 @@ Route::group(['middleware' => 'web'],  function(){
         Route::get('/help', function(){
 		return view('help');
 	});
+	
+	Route::get('/editProduct/{id}', [
+		'uses' => 'ProductController@viewEditProduct',
+	]);
+
+	Route::post('/editProduct', [
+		'uses' => 'ProductController@editProduct',
+		'as' => 'editProduct'
+	]);
+
+	Route::get('/popular', [
+		'uses' => 'ProductController@allPopular',
+	]);
+
+	Route::get('/new', [
+		'uses' => 'ProductController@allNew',
+	]);
+
+	Route::get('/adminpage', [
+		'uses' => 'AdminController@viewAdminPage',
+	]);
+
+	Route::get('/admin2', [
+		'uses' => 'AdminController@adminViewAllProduct',
+	]);
+
+	Route::get('/admin4', [
+		'uses' => 'AdminController@adminViewAllUser',
+	]);
+
+	Route::get('/admin5', [
+		'uses' => 'AdminController@adminSlideController',
+	]);
+
+	Route::get('/admin6', [
+		'uses' => 'AdminController@sendEmailSubscriber',
+	]);
+
+	Route::get('/admin7', [
+		'uses' => 'AdminController@viewBackgroundController',
+	]);
+
+	Route::get('/deleteProduct/{id}', [
+		'uses' => 'ProductController@deleteProduct',
+	]);
+
+	Route::get('/verifyProduct/{id}', [
+		'uses' => 'ProductController@verifyProduct',
+	]);
+
+	Route::post('/addSlide', [
+		'uses' => 'AdminController@addSlide',
+		'as' => 'addSlide'
+	]);
+
+	Route::post('/changeBackground', [
+		'uses' => 'AdminController@changeBackground',
+		'as' => 'changeBackground'
+	]);
+
+	Route::get('/deleteSlide/{id}', [
+		'uses' => 'AdminController@deleteSlide',
+	]);
+
+	Route::get('/ban/{username}', [
+		'uses' => 'UserController@banUser',
+	]);
 });

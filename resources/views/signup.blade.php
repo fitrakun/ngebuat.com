@@ -10,18 +10,20 @@
         <title> SignUp - Ngebuat.com</title>
     </head>
 <body>
-    <div class="container-fluid indexbody">
+	<div class="container-fluid indexbody">
             <nav class="navigation row">
-                    <div class="col-md-2 col-xs-2 space"></div>
+                    <div class="navbar-header">
+                          <a class="navbar-brand" href="http://ngebuat.com/daeun/home"><img class="logo" src="img/LOGO-01.png"></a>
+                   </div>
                     <div class="col-md-2 col-xs-3 nopadding">
                         <form action="{{ route('search') }}" method="POST" enctype="multipart/form-data">
                              <input type="text" name="Name" class="form-control input-sm searchtutorial" placeholder="Ayo cari tutorialnya" />{{ $errors->first('Name') }}<input type="hidden" name="_token" value="{{ Session::token() }}">
                     </div>
-                <ul class="topnav list-group" id="topNav">
+              	<ul class="topnav list-group" id="topNav">
                     <li class="col-md-2 col-xs-5 nopadding"><div class="nopadding"><a href="#"><img class="img-responsive searchbutton btn-navbar" src="{{asset('img/BAR-04.png')}}"></a></div></li>
 </form>
                     <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><input type="image" alt="Submit" name="submit" border="0" class="img-responsive bantuanbutton btn-navbar" src="{{asset('img/BAR-05.png')}}"><p class="navhidden">Bantuan</p></a></div></li>
-                    <li class="col-xs-12"><div class="backblack nopadding"><a href="#"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
+                    <li class="col-xs-12"><div class="backblack nopadding fb-share-button" data-href="https://www.ngebuat.com/" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ngebuat.com&amp;src=sdkpreparse"><img class="img-responsive bagikanbutton btn-navbar" src="{{asset('img/BAR-06.png')}}"><p class="navhidden">Bagikan</p></a></div></li>
                     <li  class="col-xs-12"><div class="backblack nopadding"><a href="signup"><img class="img-responsive daftarbutton btn-navbar" src="{{asset('img/BAR-07.png')}}"><p class="navhidden">Daftar</p></a></div></li>
                     <li  class="col-xs-12"><div class="backblack nopadding"><a href="login"><img class="img-responsive masukbutton btn-navbar" src="{{asset('img/BAR-08.png')}}"><p class="navhidden">Masuk</p></a></div></li>
                      <li class="icon col-xs-1 ">
@@ -40,7 +42,7 @@
                 </script>
             </nav>
             <div class="containerdaftar center-block">
-                <div class="col-md-12 col-xs-12">
+            	<div class="col-md-12 col-xs-12">
                     <img class="img-responsive signupform" src="{{asset('img/Ceritakami-02.png')}}">
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 abs inputsignup">
@@ -60,18 +62,18 @@
                 </div>
                 <div class="col-xs-5 masuk abs">Sudah menjadi anggota?<a class="kuning" href="login"> Masuk</a></div>
             </div>
-    <!-- <form action="{{ route('signup') }}" method="POST">
-        Nama tampilan : <input type="text" name="Username"> {{ $errors->first('Username') }}
-        <br><br>
-        email : <input type="text" name="Email">{{ $errors->first('Email') }}
-        <br><br>
-        password : <input type="password" name="Password"> {{ $errors->first('Password') }}
-        <br><br>
-        confirm password : <input type="password" name="Password_confirmation">
-        <br><br>
-        <input type="hidden" name="_token" value="{{ Session::token() }}">
-        <input type="submit">
-    </form> -->
-    </div>
+	<!-- <form action="{{ route('signup') }}" method="POST">
+		Nama tampilan : <input type="text" name="Username"> {{ $errors->first('Username') }}
+		<br><br>
+		email : <input type="text" name="Email">{{ $errors->first('Email') }}
+		<br><br>
+		password : <input type="password" name="Password"> {{ $errors->first('Password') }}
+		<br><br>
+		confirm password : <input type="password" name="Password_confirmation">
+		<br><br>
+		<input type="hidden" name="_token" value="{{ Session::token() }}">
+		<input type="submit">
+	</form> -->
+	</div>
 </body>
 </html>

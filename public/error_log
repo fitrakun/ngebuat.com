@@ -1,0 +1,64 @@
+[26-Dec-2016 15:05:12 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:12 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:14 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:14 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:15 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:15 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:40 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:40 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:45 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:05:45 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:06:46 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:06:46 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:16:25 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:16:25 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[26-Dec-2016 15:31:52 Asia/Jakarta] PHP Warning:  require_once(/home/ngebuatc/daeun/vendor/composer/autoload_real.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/vendor/autoload.php on line 5
+[26-Dec-2016 15:31:52 Asia/Jakarta] PHP Fatal error:  require_once(): Failed opening required '/home/ngebuatc/daeun/vendor/composer/autoload_real.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/vendor/autoload.php on line 5
+[26-Dec-2016 18:42:17 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/ngebuatc/daeun/storage/framework/views/35b74d6e3e4343998f20cc3f8379f0c078128f34.php on line 42
+[26-Dec-2016 18:56:22 UTC] PHP Parse error:  syntax error, unexpected 'use' (T_USE), expecting '{' in /home/ngebuatc/daeun/app/Http/Controllers/UserController.php on line 153
+[26-Dec-2016 18:56:22 UTC] PHP Parse error:  syntax error, unexpected 'use' (T_USE), expecting '{' in /home/ngebuatc/daeun/app/Http/Controllers/UserController.php on line 153
+[31-Dec-2016 04:55:29 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/ngebuatc/daeun/storage/framework/views/a7321f343a39355125f3322647bc3a339f9c10f1.php on line 6
+[31-Dec-2016 04:56:04 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ngebuatc/daeun/storage/framework/views/a7321f343a39355125f3322647bc3a339f9c10f1.php on line 6
+[31-Dec-2016 04:57:40 UTC] PHP Fatal error:  Class 'HTML' not found in /home/ngebuatc/daeun/storage/framework/views/a7321f343a39355125f3322647bc3a339f9c10f1.php on line 6
+[31-Dec-2016 04:58:56 UTC] PHP Fatal error:  Class 'Illuminate\Html\HtmlServiceProvider' not found in /home/ngebuatc/daeun/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php on line 146
+[31-Dec-2016 08:14:50 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/ngebuatc/daeun/routes/web.php on line 128
+[31-Dec-2016 08:20:30 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/ngebuatc/daeun/routes/web.php on line 132
+[31-Dec-2016 08:24:53 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting ']' in /home/ngebuatc/daeun/routes/web.php on line 132
+[31-Dec-2016 08:25:50 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/ngebuatc/daeun/routes/web.php on line 133
+[31-Dec-2016 13:32:17 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ngebuatc/daeun/storage/framework/views/37d827759605e0298a6942424ad522f72388c093.php on line 134
+[31-Dec-2016 13:33:41 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ngebuatc/daeun/storage/framework/views/37d827759605e0298a6942424ad522f72388c093.php on line 134
+[31-Dec-2016 13:34:02 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ngebuatc/daeun/storage/framework/views/37d827759605e0298a6942424ad522f72388c093.php on line 134
+[31-Dec-2016 14:17:23 UTC] PHP Parse error:  syntax error, unexpected '' => $search_result));' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/ngebuatc/daeun/app/Http/Controllers/ProductController.php on line 389
+[31-Dec-2016 14:49:29 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/ngebuatc/daeun/storage/framework/views/96f0beba82d7126118a8cbf815c29a6604a47931.php on line 15
+[31-Dec-2016 14:53:56 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/ngebuatc/daeun/storage/framework/views/96f0beba82d7126118a8cbf815c29a6604a47931.php on line 15
+[31-Dec-2016 15:07:55 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ngebuatc/daeun/storage/framework/views/96f0beba82d7126118a8cbf815c29a6604a47931.php on line 180
+[31-Dec-2016 15:09:54 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ngebuatc/daeun/storage/framework/views/96f0beba82d7126118a8cbf815c29a6604a47931.php on line 181
+[31-Dec-2016 16:03:32 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/ngebuatc/daeun/storage/framework/views/4446f44b2018be2683400f5eabb8449cdab71401.php on line 63
+[31-Dec-2016 16:22:16 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/ngebuatc/daeun/storage/framework/views/f5ea6ed2b1a1f559d6709d9dcb31850c5db7a195.php on line 97
+[31-Dec-2016 16:23:02 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/ngebuatc/daeun/storage/framework/views/f5ea6ed2b1a1f559d6709d9dcb31850c5db7a195.php on line 97
+[03-Jan-2017 02:34:29 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:33 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:34 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:35 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:36 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:37 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:38 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:34:49 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:36:09 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[02-Jan-2017 19:39:32 UTC] PHP Fatal error:  Class 'Intervention\Image\ImageManagerStatic' not found in /home/ngebuatc/daeun/app/Http/Controllers/UserController.php on line 277
+[03-Jan-2017 02:40:18 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:40:19 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:40:20 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[03-Jan-2017 02:40:21 Asia/Jakarta] PHP Fatal error:  Class 'ComposerAutoloaderInitfb59936152438e4cf8f1fd7228e9124b' not found in /home/ngebuatc/daeun/vendor/autoload.php on line 7
+[02-Jan-2017 19:41:13 UTC] PHP Fatal error:  Class 'Intervention\Image\ImageManagerStatic' not found in /home/ngebuatc/daeun/app/Http/Controllers/UserController.php on line 277
+[03-Jan-2017 02:43:43 Asia/Jakarta] PHP Warning:  require(/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[03-Jan-2017 02:43:43 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '/home/ngebuatc/daeun/bootstrap/../vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ngebuatc/daeun/bootstrap/autoload.php on line 17
+[03-Jan-2017 04:10:52 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/ngebuatc/daeun/app/Http/Controllers/ProductController.php on line 306
+[04-Jan-2017 04:20:47 UTC] PHP Fatal error:  Class 'App\Subcomment' not found in /home/ngebuatc/daeun/app/Http/Controllers/ProductController.php on line 515
+[04-Jan-2017 04:22:21 UTC] PHP Fatal error:  Class 'App\Subcomment' not found in /home/ngebuatc/daeun/app/Http/Controllers/ProductController.php on line 515
+[04-Jan-2017 04:48:03 UTC] PHP Fatal error:  Class 'App\Subcomment' not found in /home/ngebuatc/daeun/app/Http/Controllers/ProductController.php on line 515
+[12-Jan-2017 05:36:01 UTC] PHP Parse error:  syntax error, unexpected 'errors' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/ngebuatc/daeun/storage/framework/views/c1f101c39821309c1d9836b58beec65ad5673332.php on line 12
+[12-Jan-2017 05:36:18 UTC] PHP Parse error:  syntax error, unexpected 'errors' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/ngebuatc/daeun/storage/framework/views/c1f101c39821309c1d9836b58beec65ad5673332.php on line 12
+[12-Jan-2017 12:39:32 Asia/Jakarta] PHP Warning:  POST Content-Length of 19212582 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[12-Jan-2017 12:41:17 Asia/Jakarta] PHP Warning:  POST Content-Length of 19212208 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[12-Jan-2017 07:00:41 UTC] PHP Parse error:  syntax error, unexpected 'errors' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/ngebuatc/daeun/storage/framework/views/c1f101c39821309c1d9836b58beec65ad5673332.php on line 12
